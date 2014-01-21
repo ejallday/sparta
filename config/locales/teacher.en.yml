@@ -1,0 +1,8 @@
+en:
+  teacher:
+    dashboards:
+      show:
+        new_course: 'New course'
+    courses:
+      new:
+        create_course: 'Create course'
