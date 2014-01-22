@@ -5,6 +5,7 @@ Sparta::Application.routes.draw do
   namespace :teacher do
     resource :dashboard, only: [:show]
     resources :courses
+    resources :assignments
   end
 
   get 'sign_out' => 'sessions#destroy', as: 'sign_out'

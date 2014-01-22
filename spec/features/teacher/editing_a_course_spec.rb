@@ -5,7 +5,7 @@ feature 'user editing a course' do
     teacher = create(:user)
     course = create(:course, teacher: teacher)
     visit teacher_courses_path(as: teacher)
-    click_link I18n.t('teacher.courses.edit.edit_course')
+    click_link I18n.t('helpers.edit_model', model: 'Course')
 
     expect(current_path).to eq(edit_teacher_course_path(course))
   end
@@ -18,7 +18,7 @@ feature 'user editing a course' do
     fill_in 'course_name', with: 'Physical Education'
     fill_in 'course_period', with: '5'
     select teacher2.full_name, from: :course_user_id
-    click_button I18n.t('teacher.courses.form.update_course')
+    click_button I18n.t('helpers.submit.update', model: 'Course')
 
     expect(current_path).to eq(teacher_courses_path)
     expect(page).to have_content('Physical Education')
