@@ -12,3 +12,8 @@ en:
   helpers:
     new_model: 'New %{model}'
     edit_model: 'Edit %{model}'
+  layouts:
+    application:
+      sign_out: 'Sign out'
+      sign_in:  'Sign in'
+      sign_up:  'Sign up'
