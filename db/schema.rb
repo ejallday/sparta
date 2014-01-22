@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20140122184357) do
   create_table "assignments", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.date     "date_assigned"
-    t.date     "date_due"
+    t.date     "assigned_on"
+    t.date     "due_on"
     t.integer  "points_possible"
     t.integer  "course_id"
     t.datetime "created_at"

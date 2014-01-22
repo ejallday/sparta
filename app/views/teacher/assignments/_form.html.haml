@@ -2,7 +2,7 @@
   = form.collection_select :course_id, Course.all, :id, :name
   = form.text_field :name
   = form.text_area :description, cols: "30", rows: "10"
-  = form.date_select :date_assigned
-  = form.date_select :date_due
+  = form.date_select :assigned_on
+  = form.date_select :due_on
   = form.text_field  :points_possible
   = form.submit
