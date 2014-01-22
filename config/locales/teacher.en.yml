@@ -6,3 +6,7 @@ en:
     courses:
       new:
         create_course: 'Create course'
+      edit:
+        edit_course: 'Edit'
+      form:
+        update_course: 'Update'
