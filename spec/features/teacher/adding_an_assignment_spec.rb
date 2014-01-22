@@ -20,12 +20,12 @@ feature 'teacher adding an assignment' do
     select 'Science', from: :assignment_course_id
     fill_in :assignment_name, with: 'Pop Quiz'
     fill_in :assignment_description, with: 'test test test'
-    select '2014', from: :assignment_date_assigned_1i
-    select 'January', from: :assignment_date_assigned_2i
-    select '15', from: :assignment_date_assigned_3i
-    select '2014', from: :assignment_date_due_1i
-    select 'January', from: :assignment_date_due_2i
-    select '17', from: :assignment_date_due_3i
+    select '2014', from: :assignment_assigned_on_1i
+    select 'January', from: :assignment_assigned_on_2i
+    select '15', from: :assignment_assigned_on_3i
+    select '2014', from: :assignment_due_on_1i
+    select 'January', from: :assignment_due_on_2i
+    select '17', from: :assignment_due_on_3i
     fill_in :assignment_points_possible, with: 100
     click_button I18n.t('helpers.submit.create', model: 'Assignment')
 
