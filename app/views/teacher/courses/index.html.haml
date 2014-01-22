@@ -1,4 +1,2 @@
 %ul
-  - @courses.each do |course|
-    %li
-      = "#{course.name}, period #{course.period}, instructor: #{course.teacher.last_name}"
+  = render @courses
