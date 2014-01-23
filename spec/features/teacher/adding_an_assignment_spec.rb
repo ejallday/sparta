@@ -21,14 +21,15 @@ feature 'teacher adding an assignment' do
     assigned_on = DateTime.parse('January 15, 2014')
     due_on = DateTime.parse('January 17, 2014')
 
-
-    select_from_dropdown(:assignment, :course_id, 'Science')
-    fill_in_text_field(:assignment, :name, 'Pop Quiz')
-    fill_in_text_field(:assignment, :description, 'I hope you studied!')
-    select_date( :assignment, :assigned_on, assigned_on )
-    select_date( :assignment, :due_on, due_on )
-    fill_in_text_field(:assignment, :points_possible, 100)
-    click_button I18n.t('helpers.submit.create', model: 'Assignment')
+    within_form(:assignment) do |prefix|
+      select_from_dropdown(prefix, :course_id, 'Science')
+      fill_in_text_field(prefix, :name, 'Pop Quiz')
+      fill_in_text_field(prefix, :description, 'I hope you studied!')
+      select_date(prefix, :assigned_on, assigned_on )
+      select_date(prefix, :due_on, due_on )
+      fill_in_text_field(prefix, :points_possible, 100)
+      click_button I18n.t('helpers.submit.create', model: 'Assignment')
+    end
 
     expect(current_path).to eq(teacher_assignments_path)
     expect(page).to have_content('course: Science')
@@ -37,6 +38,10 @@ feature 'teacher adding an assignment' do
     expect(page).to have_content('assigned on: January 15, 2014')
     expect(page).to have_content('due on: January 17, 2014')
     expect(page).to have_content('points possible: 100')
+  end
+
+  def within_form(prefix, &block)
+    yield prefix
   end
 
   def fill_in_text_field(prefix, field, value)
