@@ -5,6 +5,7 @@ ruby '2.0.0'
 gem 'airbrake'
 gem 'bcrypt-ruby', require: 'bcrypt'
 gem 'bourbon'
+gem 'clearance'
 gem 'coffee-rails'
 gem 'delayed_job_active_record', '>= 4.0.0'
 gem 'email_validator'
@@ -29,14 +30,15 @@ group :development do
 end
 
 group :development, :test do
-  gem 'factory_girl_rails'
   gem 'pry'
   gem 'rspec-rails', '>= 2.14'
 end
 
 group :test do
+  gem 'capybara'
   gem 'capybara-webkit', '>= 1.0.0'
   gem 'database_cleaner'
+  gem 'factory_girl_rails'
   gem 'faker'
   gem 'launchy'
   gem 'shoulda-matchers'

@@ -31,5 +31,5 @@ Sparta::Application.configure do
   config.action_controller.action_on_unpermitted_parameters = :raise
 
 
-  config.action_mailer.default_url_options = { host: 'sparta.local' }
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
 end

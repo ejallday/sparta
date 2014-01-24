@@ -1,5 +1,4 @@
 class Teacher::CoursesController < ApplicationController
-
   def create
     @course = Course.create!(course_params)
     redirect_to teacher_courses_path
