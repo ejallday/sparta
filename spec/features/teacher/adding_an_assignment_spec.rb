@@ -33,8 +33,8 @@ feature 'teacher adding an assignment' do
         assigned_on: assigned_on,
         due_on: due_on 
       )
+      f.submit(:create)
     end
-      click_button I18n.t('helpers.submit.create', model: 'Assignment')
 
     expect(current_path).to eq(teacher_assignments_path)
     expect(page).to have_content('course: Science')
@@ -83,7 +83,16 @@ class FormCompletionHelper
   end
   alias :select_from_dropdowns :select_from_dropdown
 
+  def submit(create_or_update)
+    raise InvalidArgumentException unless [:create, :update].include?(create_or_update.to_sym)
+    click_button I18n.t("helpers.submit.#{create_or_update}", model: model_name)
+  end
   private
 
+
   attr_reader :prefix, :context
+
+  def model_name
+    prefix.to_s.capitalize
+  end
 end
