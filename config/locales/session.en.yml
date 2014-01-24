@@ -1,0 +1,28 @@
+en:
+  helpers:
+    submit:
+      password:
+        submit:
+          'Reset password'
+      password_reset:
+        submit:
+          'Reset password'
+      session:
+        submit:
+          'Sign in'
+      user:
+        create:
+          'Sign up'
+        submit:
+          'Create account'
+    label:
+      password:
+        email:
+          'Email address'
+      password_reset:
+        password:
+          'Choose password'
+  sessions:
+    form:
+      sign_up:
+        'Sign up'

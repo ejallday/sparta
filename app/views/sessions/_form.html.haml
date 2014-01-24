@@ -1,0 +1,10 @@
+= form_for :session, url: session_path do |form|
+  .text-field
+    = form.label :username
+    = form.text_field :username
+  .password-field
+    = form.label :password
+    = form.password_field :password
+  .submit-field
+    = form.submit
+  .other-links
