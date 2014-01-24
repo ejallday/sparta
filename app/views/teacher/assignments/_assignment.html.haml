@@ -1,0 +1,7 @@
+%li
+  = "course: #{assignment.course.name}"
+  = "name: #{assignment.name}"
+  = "description: #{assignment.description}"
+  = "assigned on: #{l(assignment.assigned_on, format: :long)}"
+  = "due on: #{l(assignment.due_on, format: :long)}"
+  = "points possible: #{assignment.points_possible}"

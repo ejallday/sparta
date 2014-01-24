@@ -1,6 +1,12 @@
 Sparta::Application.routes.draw do
   resource :session, only: [:create, :destroy, :new]
-  resource :use
+  resource :user
+
+  namespace :teacher do
+    resource :dashboard, only: [:show]
+    resources :courses
+    resources :assignments
+  end
 
   get 'sign_out' => 'sessions#destroy', as: 'sign_out'
   get 'sign_in' => 'sessions#new', as: 'sign_in'

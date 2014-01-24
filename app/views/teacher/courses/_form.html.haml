@@ -1,0 +1,5 @@
+= form_for [:teacher, @course] do |form|
+  = form.text_field :name
+  = form.text_field :period
+  = form.collection_select :user_id, User.all, :id, :full_name
+  = form.submit

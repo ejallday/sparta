@@ -3,9 +3,17 @@ en:
     formats:
       default: '%m/%d/%Y'
       with_weekday: '%a %m/%d/%y'
-
+      long: '%B %e, %Y'
   time:
     formats:
       default: '%a, %b %-d, %Y at %r'
       date: '%b %-d, %Y'
       short: '%B %d'
+  helpers:
+    new_model: 'New %{model}'
+    edit_model: 'Edit %{model}'
+  layouts:
+    application:
+      sign_out: 'Sign out'
+      sign_in:  'Sign in'
+      sign_up:  'Sign up'
