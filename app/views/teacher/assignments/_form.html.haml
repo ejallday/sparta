@@ -1,9 +1,9 @@
-= form_for [:teacher, @assignment] do |form|
-  = form.collection_select :course_id, Course.all, :id, :name
-  = form.text_field :name
-  = form.text_area :description, cols: "30", rows: "10"
+= form_for [:teacher, @assignment] do |f|
+  = f.collection_select :course_id, Course.all, :id, :name
+  = f.text_field :name
+  = f.text_area :description, cols: "30", rows: "10"
   = label_tag :assignment_assigned_on, 'Assigned on'
-  = form.date_select :assigned_on
-  = form.date_select :due_on
-  = form.text_field  :points_possible
-  = form.submit
+  = f.date_select :assigned_on
+  = f.date_select :due_on
+  = f.text_field  :points_possible
+  = f.submit
