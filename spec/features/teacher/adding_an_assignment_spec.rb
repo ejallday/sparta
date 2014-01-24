@@ -23,12 +23,16 @@ feature 'teacher adding an assignment' do
     due_on = DateTime.parse('January 17, 2014')
 
     within_form(:assignment) do |f|
-      f.select_from_dropdown(:course_id, 'Science')
-      f.fill_in_text_field(:name, 'Pop Quiz')
-      f.fill_in_text_field(:description, 'I hope you studied!')
-      f.select_date(:assigned_on, assigned_on )
-      f.select_date(:due_on, due_on )
-      f.fill_in_text_field(:points_possible, 100)
+      f.select_from_dropdown(course_id: 'Science')
+      f.fill_in_text_field(
+        name: 'Pop Quiz',
+        description: 'I hope you studied!',
+        points_possible: 100
+      )
+      f.select_date(
+        assigned_on: assigned_on,
+        due_on: due_on 
+      )
     end
       click_button I18n.t('helpers.submit.create', model: 'Assignment')
 
@@ -56,22 +60,30 @@ class FormCompletionHelper
     @context = context
   end
 
-  def fill_in_text_field(field, value)
-    fill_in :"#{prefix}_#{field}", with: value  
+  def fill_in_text_field(options)
+    options.each do |field, value|
+      fill_in :"#{prefix}_#{field}", with: value
+    end
   end
+  alias :fill_in_text_fields :fill_in_text_field
 
-  def select_date(field, date)
-    select date.year, from: :"#{prefix}_#{field}_1i"
-    select date.strftime('%B'), from: :"#{prefix}_#{field}_2i"
-    select date.day, from: :"#{prefix}_#{field}_3i"
+  def select_date(options)
+    options.each do |field, date|
+      select date.year, from: :"#{prefix}_#{field}_1i"
+      select date.strftime('%B'), from: :"#{prefix}_#{field}_2i"
+      select date.day, from: :"#{prefix}_#{field}_3i"
+    end
   end
+  alias :select_dates :select_date
 
-  def select_from_dropdown(field, value)
-    select value, from: :"#{prefix}_#{field}"
+  def select_from_dropdown(options)
+    options.each do |field, value|
+      select value, from: :"#{prefix}_#{field}"
+    end
   end
+  alias :select_from_dropdowns :select_from_dropdown
 
   private
 
   attr_reader :prefix, :context
-
 end
