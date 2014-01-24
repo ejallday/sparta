@@ -1,7 +1,8 @@
 class Teacher::AssignmentsController < ApplicationController
+  helper_method :form
 
   def create
-    Assignment.create(assignment_params)
+    form.submit(assignment_params)
     redirect_to teacher_assignments_path
   end
 
@@ -16,5 +17,9 @@ class Teacher::AssignmentsController < ApplicationController
   private
   def assignment_params
     params.require(:assignment).permit(:course_id, :name, :description, :assigned_on, :due_on, :points_possible)
+  end
+
+  def form
+    @form ||= AssignmentForm.new(current_user)
   end
 end

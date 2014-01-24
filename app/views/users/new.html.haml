@@ -1,8 +1,9 @@
-#user.sign-up
+#clearance.sign-up
   %h2= t('.title')
-  =form_for @user, url: users_path do |form|
-    =render partial: '/users/form', object: form
+  = form_for @user do |form|
+    = render :partial => '/users/form', :object => form
     .submit-field
-      =form.submit
+      = form.submit
     .other-links
-      =link_to t('.sign_in'), sign_in_path
+      = link_to t('.sign_in'), sign_in_path
+= yield
