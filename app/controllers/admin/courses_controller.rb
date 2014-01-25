@@ -1,11 +1,16 @@
-class Teacher::CoursesController < ApplicationController
+class Admin::CoursesController < ApplicationController
+  helper_method :course
+
   def create
     @course = Course.create!(course_params)
-    redirect_to teacher_courses_path
+    redirect_to admin_courses_path
   end
 
   def edit
-    course
+    unless current_user.admin?
+      flash[:error] = I18n.t('.teacher.course_not_found')
+      redirect_to admin_courses_path
+    end
   end
 
   def index
@@ -18,7 +23,7 @@ class Teacher::CoursesController < ApplicationController
 
   def update
     course.update_attributes(course_params)
-    redirect_to teacher_courses_path
+    redirect_to admin_courses_path
   end
 
   private
@@ -28,6 +33,6 @@ class Teacher::CoursesController < ApplicationController
   end
 
   def course
-    @course = Course.find_by(id: params[:id])
+    @course ||= Course.find_by(id: params[:id])
   end
 end
