@@ -4,7 +4,7 @@ feature 'Visitor resets password' do
   scenario 'by navigating to the page' do
     visit sign_in_path
 
-    click_link I18n.t('sessions.form.forgot_password')
+    click_link t('sessions.form.forgot_password')
 
     current_path.should eq new_password_path
   end
@@ -31,7 +31,7 @@ feature 'Visitor resets password' do
   end
 
   def page_should_display_change_password_message
-    page.should have_content I18n.t('passwords.create.description')
+    page.should have_content t('passwords.create.description')
   end
 
   def mailer_should_have_delivery(recipient, subject, body)

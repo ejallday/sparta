@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 feature 'admin manages courses' do
-  delegate :t, :l, to: I18n
-
   scenario 'by navigating to new course page' do
     admin = create(:user, :admin)
 
@@ -15,12 +13,12 @@ feature 'admin manages courses' do
   scenario 'fill out new course form' do
     admin = create(:user, :admin)
     teacher = create(:user, first_name: 'Duce', last_name: 'Bigelow')
-    
+
     visit new_admin_course_path(as: admin)
     fill_in :course_name, with: 'History'
     fill_in :course_period, with: '1'
     select teacher.full_name, from: :course_user_id
-    click_button I18n.t('helpers.submit.create', model: 'Course')
+    click_button t('helpers.submit.create', model: 'Course')
 
     expect(current_path).to eq(admin_courses_path)
     expect(page).to have_content("History, period 1, instructor: #{teacher.last_name}")
@@ -47,7 +45,7 @@ feature 'admin manages courses' do
     fill_in 'course_name', with: 'Physical Education'
     fill_in 'course_period', with: '5'
     select teacher2.full_name, from: :course_user_id
-    click_button I18n.t('helpers.submit.update', model: 'Course')
+    click_button t('helpers.submit.update', model: 'Course')
 
     expect(current_path).to eq(admin_courses_path)
     expect(page).to have_content('Physical Education')
