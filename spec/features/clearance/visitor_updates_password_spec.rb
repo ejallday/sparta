@@ -22,7 +22,7 @@ feature 'Visitor updates password' do
     visit_password_reset_page_for user
     change_password_to ''
 
-    page.should have_content I18n.t('flashes.failure_after_update')
+    page.should have_content t('flashes.failure_after_update')
     user_should_be_signed_out
   end
 
@@ -42,6 +42,6 @@ feature 'Visitor updates password' do
 
   def change_password_to(password)
     fill_in 'password_reset_password', :with => password
-    click_button I18n.t('helpers.submit.password_reset.submit')
+    click_button t('helpers.submit.password_reset.submit')
   end
 end

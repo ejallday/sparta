@@ -1,7 +1,7 @@
 %li
-  = "course: #{assignment.course.name}"
-  = "name: #{assignment.name}"
-  = "description: #{assignment.description}"
-  = "assigned on: #{l(assignment.assigned_on, format: :long)}"
-  = "due on: #{l(assignment.due_on, format: :long)}"
-  = "points possible: #{assignment.points_possible}"
+  = "#{Assignment.human_attribute_name(:course)}: #{assignment.course.name}"
+  = "#{Assignment.human_attribute_name(:name)}: #{assignment.name}"
+  = "#{Assignment.human_attribute_name(:description)}: #{assignment.description}"
+  = "#{Assignment.human_attribute_name(:assigned_on)}: #{l(assignment.assigned_on, format: :long)}"
+  = "#{Assignment.human_attribute_name(:due_on)}: #{l(assignment.due_on, format: :long)}"
+  = "#{Assignment.human_attribute_name(:points_possible)}: #{assignment.points_possible}"

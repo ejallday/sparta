@@ -39,4 +39,7 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+  config.include Features, type: :feature
+  config.include Features::FormHelpers, type: :feature
+  config.include Features::I18nHelpers, type: :feature
 end
