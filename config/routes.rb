@@ -8,8 +8,9 @@ Sparta::Application.routes.draw do
   end
 
   namespace :teacher do
-    resource :dashboard, only: [:show]
     resources :assignments
+    resources :courses, only: [:index]
+    resource :dashboard, only: [:show]
   end
 
   root :to => 'sessions#new'
