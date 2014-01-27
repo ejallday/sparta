@@ -1,5 +1,6 @@
 class Admin::CoursesController < ApplicationController
   helper_method :course
+  before_filter :authorize_admin
 
   def create
     @course = Course.create!(course_params)
@@ -7,10 +8,9 @@ class Admin::CoursesController < ApplicationController
   end
 
   def edit
-    unless current_user.admin?
-      flash[:error] = I18n.t('.teacher.course_not_found')
-      redirect_to admin_courses_path
-    end
+  end
+
+  def destroy
   end
 
   def index
@@ -34,5 +34,12 @@ class Admin::CoursesController < ApplicationController
 
   def course
     @course ||= Course.find_by(id: params[:id])
+  end
+
+  def authorize_admin
+    unless current_user && current_user.admin?
+      flash[:error] = I18n.t('errors.admin.unauthorized')
+      redirect_to sign_in_path
+    end
   end
 end
