@@ -52,4 +52,22 @@ feature 'admin manages courses' do
     expect(page).to have_content('period 5')
     expect(page).to have_content("instructor: #{teacher2.last_name}")
   end
+
+  context 'when selecting a period for which Teachers are already booked' do
+    scenario 'booked Teachers are not available as options' do
+      admin = create(:user, :admin)
+      teacher1 = create(:user, last_name: 'Bojangles')
+      create(:user, last_name: 'Adams')
+      create(:course, period: '1', teacher: teacher1)
+
+      visit new_admin_course_path(as: admin)
+      expect(page).to have_content('Adams')
+      expect(page).to have_content('Bojangles')
+
+      fill_in 'course_period', with: 1
+
+      expect(page).to have_content('Adams')
+      expect(page).not_to have_content('Bojangles')
+    end
+  end
 end

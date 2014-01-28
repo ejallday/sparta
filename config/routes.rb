@@ -5,6 +5,7 @@ Sparta::Application.routes.draw do
   namespace :admin do
     resources :courses
     resource :dashboard, only: [:show]
+    resources :available_teachers, only: [:index]
   end
 
   namespace :teacher do
