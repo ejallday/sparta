@@ -29,7 +29,7 @@ class Admin::CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:name, :period, :user_id)
+    params.require(:course).permit(:name, :period, :teacher_id)
   end
 
   def course

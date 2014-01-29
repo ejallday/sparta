@@ -7,6 +7,6 @@
     = f.text_field :period
   .select-field
     = f.label 'Teacher'
-    = f.collection_select :user_id, User.all, :id, :full_name
+    = f.collection_select :teacher_id, Teacher.all, :id, :full_name
   .submit
     = f.submit
