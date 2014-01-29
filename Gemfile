@@ -32,6 +32,7 @@ end
 
 group :development, :test do
   gem 'awesome_print'
+  gem 'faker'
   gem 'pry'
   gem 'rspec-rails', '>= 2.14'
 end
@@ -41,7 +42,6 @@ group :test do
   gem 'capybara-webkit', '>= 1.0.0'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'launchy'
   gem 'poltergeist'
   gem 'shoulda-matchers'
