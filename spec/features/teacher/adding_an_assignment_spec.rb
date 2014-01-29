@@ -4,9 +4,9 @@ feature 'teacher adding an assignment' do
 
   scenario 'by navigating to new assignment page' do
     teacher = create(:user)
-    visit teacher_dashboard_path(as: teacher)
+    visit teachers_dashboard_path(as: teacher)
     click_link t('helpers.new_model', model: 'Assignment')
-    expect(current_path).to eq(new_teacher_assignment_path)
+    expect(current_path).to eq(new_teachers_assignment_path)
   end
 
   scenario 'can create an assignment with valid attributes' do
@@ -17,7 +17,7 @@ feature 'teacher adding an assignment' do
       create(:course, name: course_name, teacher: teacher)
     end
 
-    visit new_teacher_assignment_path(as: teacher)
+    visit new_teachers_assignment_path(as: teacher)
 
     assigned_on = Date.parse('January 15, 2014')
     due_on = Date.parse('January 17, 2014')
@@ -36,7 +36,7 @@ feature 'teacher adding an assignment' do
       f.submit(:create)
     end
 
-    expect(current_path).to eq(teacher_assignments_path)
+    expect(current_path).to eq(teachers_assignments_path)
     expect(page).to have_content("#{Assignment.human_attribute_name(:course)}: Science")
     expect(page).to have_content("#{Assignment.human_attribute_name(:name)}: Pop Quiz")
     expect(page).to have_content("#{Assignment.human_attribute_name(:description)}: I hope you studied!")

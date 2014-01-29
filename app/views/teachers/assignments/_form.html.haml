@@ -1,4 +1,4 @@
-= form_for [:teacher, @assignment] do |f|
+= form_for [:teachers, @assignment] do |f|
   = f.collection_select :course_id, Course.all, :id, :name
   = f.text_field :name
   = f.text_area :description, cols: "30", rows: "10"
