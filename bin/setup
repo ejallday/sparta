@@ -6,11 +6,17 @@
 # Exit if any subcommand fails
 set -e
 
+# Install bower via npm for JS package management
+npm install -g bower
+
 # Set up Ruby dependencies via Bundler
 bundle install
 
 # Set up the database
 bundle exec rake db:setup
+
+# Install JS dependencies
+bundle exec rake bower:install
 
 # Set up configurable environment variables
 if [ ! -f .env ]; then

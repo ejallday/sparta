@@ -1,5 +1,12 @@
-= form_for [:admin, course] do |form|
-  = form.text_field :name
-  = form.text_field :period
-  = form.collection_select :user_id, User.all, :id, :full_name
-  = form.submit
+= form_for [:admin, course] do |f|
+  .text-field
+    = f.label :name
+    = f.text_field :name
+  .text-field
+    = f.label :period
+    = f.text_field :period
+  .select-field
+    = f.label 'Teacher'
+    = f.collection_select :user_id, User.all, :id, :full_name
+  .submit
+    = f.submit
