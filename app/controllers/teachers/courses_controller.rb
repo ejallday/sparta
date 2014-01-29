@@ -1,4 +1,4 @@
-class Teacher::CoursesController < ApplicationController
+class Teachers::CoursesController < ApplicationController
   helper_method :courses
 
   def index

@@ -6,7 +6,7 @@ feature 'As a Teacher viewing Courses' do
     create(:course, name: 'History', teacher: teacher)
     create(:course, name: 'Science')
 
-    visit teacher_courses_path(as: teacher)
+    visit teachers_courses_path(as: teacher)
 
     expect(page).to have_content('History')
     expect(page).not_to have_content('Science')
@@ -18,7 +18,7 @@ feature 'As a Teacher viewing Courses' do
     create(:course, name: 'History', period: 2, teacher: teacher)
     create(:course, name: 'Science', period: 5, teacher: teacher)
 
-    visit teacher_courses_path(as: teacher)
+    visit teachers_courses_path(as: teacher)
 
     expect_courses_to_appear_in_the_following_order(%w(History PE Science))
   end

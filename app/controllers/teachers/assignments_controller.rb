@@ -1,9 +1,9 @@
-class Teacher::AssignmentsController < ApplicationController
+class Teachers::AssignmentsController < ApplicationController
   helper_method :form
 
   def create
     form.submit(assignment_params)
-    redirect_to teacher_assignments_path
+    redirect_to teachers_assignments_path
   end
 
   def index
