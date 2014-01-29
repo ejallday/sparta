@@ -12,12 +12,12 @@ feature 'admin manages courses' do
 
   scenario 'fill out new course form' do
     admin = create(:user, :admin)
-    teacher = create(:user, first_name: 'Duce', last_name: 'Bigelow')
+    teacher = create(:teacher, first_name: 'Duce', last_name: 'Bigelow')
 
     visit new_admin_course_path(as: admin)
     fill_in :course_name, with: 'History'
     fill_in :course_period, with: '1'
-    select teacher.full_name, from: :course_user_id
+    select teacher.full_name, from: :course_teacher_id
     click_button t('helpers.submit.create', model: 'Course')
 
     expect(current_path).to eq(admin_courses_path)
@@ -26,7 +26,7 @@ feature 'admin manages courses' do
 
   scenario 'by navigating to course edit page' do
     admin = create(:user, :admin)
-    teacher = create(:user)
+    teacher = create(:teacher)
     course = create(:course, teacher: teacher)
     visit admin_courses_path(as: admin)
     click_link t('helpers.edit_model', model: 'Course')
@@ -36,15 +36,15 @@ feature 'admin manages courses' do
 
   scenario 'by changing course attributes' do
     admin = create(:user, :admin)
-    teacher1 = create(:user, last_name: 'Bojangles')
-    teacher2 = create(:user, last_name: 'Adams')
+    teacher1 = create(:teacher, last_name: 'Bojangles')
+    teacher2 = create(:teacher, last_name: 'Adams')
     course = create(:course, name: 'Math', period: '1', teacher: teacher1)
 
     visit edit_admin_course_path(course, as: admin)
 
     fill_in 'course_name', with: 'Physical Education'
     fill_in 'course_period', with: '5'
-    select teacher2.full_name, from: :course_user_id
+    select teacher2.full_name, from: :course_teacher_id
     click_button t('helpers.submit.update', model: 'Course')
 
     expect(current_path).to eq(admin_courses_path)
@@ -56,8 +56,8 @@ feature 'admin manages courses' do
   context 'when selecting a period for which Teachers are already booked' do
     scenario 'booked Teachers are not available as options', js: true do
       admin = create(:user, :admin)
-      teacher1 = create(:user, first_name: 'Tom', last_name: 'Bojangles')
-      teacher2 = create(:user, first_name: 'Quincy', last_name: 'Adams')
+      teacher1 = create(:teacher, first_name: 'Tom', last_name: 'Bojangles')
+      teacher2 = create(:teacher, first_name: 'Quincy', last_name: 'Adams')
       create(:course, period: '1', teacher: teacher1)
       create(:course, period: '4', teacher: teacher2)
 

@@ -29,7 +29,7 @@ $(document).ready(function(){
   CourseForm.prototype.optionRetriever = function(formData) {
     this.resetOptions();
     formData.forEach(this.addOption);
-    $('#course_user_id').html(this.options);
+    $('#course_teacher_id').html(this.options);
   };
 
   CourseForm.prototype.resetOptions = function() {

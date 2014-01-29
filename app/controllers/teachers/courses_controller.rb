@@ -7,6 +7,10 @@ class Teachers::CoursesController < ApplicationController
   private
 
   def courses
-    @courses ||= current_user.courses.order(:period)
+    @courses ||= teacher.courses.order(:period)
+  end
+
+  def teacher
+    current_user.teacher
   end
 end

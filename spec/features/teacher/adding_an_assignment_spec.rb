@@ -3,21 +3,20 @@ require 'spec_helper'
 feature 'teacher adding an assignment' do
 
   scenario 'by navigating to new assignment page' do
-    teacher = create(:user)
-    visit teachers_dashboard_path(as: teacher)
+    teacher = create(:teacher)
+    visit teachers_dashboard_path(as: teacher.user)
     click_link t('helpers.new_model', model: 'Assignment')
     expect(current_path).to eq(new_teachers_assignment_path)
   end
 
   scenario 'can create an assignment with valid attributes' do
-
-    teacher = create(:user)
+    teacher = create(:teacher)
 
     %w(Math Science History Quantum\ Physics).each do |course_name|
       create(:course, name: course_name, teacher: teacher)
     end
 
-    visit new_teachers_assignment_path(as: teacher)
+    visit new_teachers_assignment_path(as: teacher.user)
 
     assigned_on = Date.parse('January 15, 2014')
     due_on = Date.parse('January 17, 2014')

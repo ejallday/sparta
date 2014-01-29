@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe User do
-  it { should have_many(:courses) }
   it { should have_one(:teacher) }
 
   describe 'when signing up' do
