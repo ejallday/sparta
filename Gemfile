@@ -5,6 +5,7 @@ ruby '2.0.0'
 gem 'airbrake'
 gem 'bcrypt-ruby', require: 'bcrypt'
 gem 'bourbon'
+gem 'bower-rails'
 gem 'clearance'
 gem 'coffee-rails'
 gem 'delayed_job_active_record', '>= 4.0.0'
@@ -30,6 +31,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'awesome_print'
   gem 'pry'
   gem 'rspec-rails', '>= 2.14'
 end
@@ -41,6 +43,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'launchy'
+  gem 'poltergeist'
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'timecop'

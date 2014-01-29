@@ -1,32 +1,45 @@
-// this works with render layout:false
-//$(document).ready(function() {
-//  $('#course_period').on('keyup', function(event) {
-//    var value = $(this).val();
-//    var url = '/admin/available_teachers'
-//    $.get(url, {period: value}, function(form_data){
-//      console.log(form_data);
-//      $('select').replaceWith(form_data)
-//    })
-// selectTag.html(html)
-//  });
-//});
-//
-
 $(document).ready(function(){
-  $('#course_period').on('keyup', function(event) {
-    var value = $(this).val();
-    var url = '/admin/available_teachers'
+  var __bind = function(fn, me) {
+    return function(){ return fn.apply(me, arguments); };
+  };
 
-    $.get(url, {period: value}, function(form_data){
-      console.log(form_data[0].first_name, form_data[0].id);
-      var options = []
-      form_data.forEach(function(teacher){
-        options.push("<option value=" + teacher.id + ">" + teacher.first_name +" "+ teacher.last_name + "</option>")
-      });
-    $('select').html(options);
-    });
-  });
+  var CourseForm = function() {
+    this.resetOptions();
+    this.handleInputChange = __bind(this.handleInputChange, this);
+    this.addOption = __bind(this.addOption, this);
+    this.optionRetriever = __bind(this.optionRetriever, this);
+    this.bindEvents();
+  };
+
+  CourseForm.prototype.addOption = function(model){
+    var template = this.template();
+    this.options.push(template(model));
+  };
+
+  CourseForm.prototype.bindEvents = function() {
+    $('#course_period').on('keyup', this.handleInputChange);
+  };
+
+  CourseForm.prototype.handleInputChange = function(event) {
+    var value = $(event.target).val();
+    var url = '/admin/available_teachers.json';
+    $.get(url, {period: value}, this.optionRetriever);
+  };
+
+  CourseForm.prototype.optionRetriever = function(formData) {
+    this.resetOptions();
+    formData.forEach(this.addOption);
+    $('#course_user_id').html(this.options);
+  };
+
+  CourseForm.prototype.resetOptions = function() {
+    this.options = [];
+  };
+
+  CourseForm.prototype.template = function() {
+    return _.template($('#option-template').html());
+  };
+
+  new CourseForm();
 });
 
-// <option value="1">Jonesmahoney</option>
-// <option value="2">Mahiggleflop</option>

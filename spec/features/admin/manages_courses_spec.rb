@@ -54,20 +54,30 @@ feature 'admin manages courses' do
   end
 
   context 'when selecting a period for which Teachers are already booked' do
-    scenario 'booked Teachers are not available as options' do
+    scenario 'booked Teachers are not available as options', js: true do
       admin = create(:user, :admin)
-      teacher1 = create(:user, last_name: 'Bojangles')
-      create(:user, last_name: 'Adams')
+      teacher1 = create(:user, first_name: 'Tom', last_name: 'Bojangles')
+      teacher2 = create(:user, first_name: 'Quincy', last_name: 'Adams')
       create(:course, period: '1', teacher: teacher1)
+      create(:course, period: '4', teacher: teacher2)
 
       visit new_admin_course_path(as: admin)
-      expect(page).to have_content('Adams')
-      expect(page).to have_content('Bojangles')
+      expect(select_options_content).to include('Quincy Adams')
+      expect(select_options_content).to include('Tom Bojangles')
 
       fill_in 'course_period', with: 1
 
-      expect(page).to have_content('Adams')
-      expect(page).not_to have_content('Bojangles')
+      expect(select_options_content).to include('Quincy Adams')
+      expect(select_options_content).not_to include('Tom Bojangles')
+
+      fill_in 'course_period', with: 4
+
+      expect(select_options_content).not_to include('Quincy Adams')
+      expect(select_options_content).to include('Tom Bojangles')
     end
+  end
+
+  def select_options_content
+    page.all('option').map(&:text)
   end
 end

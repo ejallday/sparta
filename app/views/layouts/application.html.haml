@@ -6,15 +6,17 @@
     %title=page_title
     = stylesheet_link_tag :application, media: 'all'
     = csrf_meta_tags
-  %header
-    - if signed_in?
-      = link_to t('layouts.application.sign_out'), sign_out_path, method: :delete
-    - else
-      = link_to t('layouts.application.sign_in'), sign_in_path
-    #flash
-      - flash.each do |key, value|
-        %div{class: "flash #{key}"}= value
   %body{class: body_class}
-  = render 'flashes'
-  = yield
-  = render 'javascript'
+    %header
+      - if signed_in?
+        = link_to t('layouts.application.sign_out'), sign_out_path, method: :delete
+      - else
+        = link_to t('layouts.application.sign_in'), sign_in_path
+      #flash
+        - flash.each do |key, value|
+          %div{class: "flash #{key}"}= value
+    %script(type='text/html' id='option-template')
+      <option value="<%= id %>"><%= full_name %></option>
+    = render 'flashes'
+    = yield
+    = render 'javascript'

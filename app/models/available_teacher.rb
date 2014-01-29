@@ -1,5 +1,7 @@
 class AvailableTeacher
   def self.for_period(period)
-    User.joins(:courses).where.not('courses.period' => period)
+    User.all.select do |user|
+      user.courses.any? && !user.courses.map(&:period).include?(period)
+    end
   end
 end
