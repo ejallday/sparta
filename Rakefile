@@ -13,6 +13,6 @@ if defined?(RSpec)
 
   task spec: :factory_specs
 end
-task('db:fukit' => %w(db:drop db:create db:migrate db:test:prepare))
+task('db:fukit' => %w(db:drop db:create db:migrate db:test:prepare db:seed))
 task(:default).clear
 task :default => [:spec]
