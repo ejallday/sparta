@@ -18,5 +18,9 @@ Sparta::Application.routes.draw do
     resource :dashboard, only: [:show]
   end
 
+  namespace :guardians do
+    resource :dashboard, only: [:show]
+  end
+
   root :to => 'sessions#new'
 end
