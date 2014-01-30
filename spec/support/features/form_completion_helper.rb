@@ -31,9 +31,8 @@ module Features
     end
     alias :select_from_dropdowns :select_from_dropdown
 
-    def submit(create_or_update)
-      raise InvalidArgumentException unless [:create, :update].include?(create_or_update.to_sym)
-      click_button I18n.t("helpers.submit.#{create_or_update}", model: model_name)
+    def submit(translation_key)
+      click_button I18n.t("helpers.submit.#{translation_key}", model: model_name)
     end
 
     private
