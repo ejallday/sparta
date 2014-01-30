@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   include Clearance::User
   has_one :teacher
   has_one :student
+  has_one :guardian
 
   def full_name
     "#{first_name} #{last_name}"
@@ -13,5 +14,9 @@ class User < ActiveRecord::Base
 
   def student?
     student.present?
+  end
+
+  def guardian?
+    guardian.present?
   end
 end
