@@ -10,7 +10,7 @@ describe User do
 
   describe '#full_name' do
     it 'returns concatenated first & last name' do
-      user = create(:user, first_name: 'Joe', last_name: 'Blow')
+      user = build(:user, first_name: 'Joe', last_name: 'Blow')
       expect(user.full_name).to eq('Joe Blow')
     end
   end
