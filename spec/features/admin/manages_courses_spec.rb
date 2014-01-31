@@ -6,7 +6,7 @@ feature 'admin manages courses' do
 
     visit admin_dashboard_path(as: admin)
 
-    click_link t('helpers.new_model', model: 'Course')
+    click_link t('admin.dashboards.new_course')
     expect(current_path).to eq(new_admin_course_path)
   end
 
@@ -18,7 +18,7 @@ feature 'admin manages courses' do
     fill_in :course_name, with: 'History'
     fill_in :course_period, with: '1'
     select teacher.full_name, from: :course_teacher_id
-    click_button t('helpers.submit.create', model: 'Course')
+    click_button t('admin.courses.create_course')
 
     expect(current_path).to eq(admin_courses_path)
     expect(page).to have_content("History, period 1, instructor: #{teacher.last_name}")
@@ -29,7 +29,7 @@ feature 'admin manages courses' do
     teacher = create(:teacher)
     course = create(:course, teacher: teacher)
     visit admin_courses_path(as: admin)
-    click_link t('helpers.edit_model', model: 'Course')
+    click_link t('admin.courses.edit_course')
 
     expect(current_path).to eq(edit_admin_course_path(course))
   end
@@ -45,7 +45,7 @@ feature 'admin manages courses' do
     fill_in 'course_name', with: 'Physical Education'
     fill_in 'course_period', with: '5'
     select teacher2.full_name, from: :course_teacher_id
-    click_button t('helpers.submit.update', model: 'Course')
+    click_button t('admin.courses.update_course')
 
     expect(current_path).to eq(admin_courses_path)
     expect(page).to have_content('Physical Education')

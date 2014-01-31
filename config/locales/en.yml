@@ -1,4 +1,16 @@
 en:
+  admin:
+    courses:
+      form:
+        delete: 'Delete Course'
+        confirm_delete: 'Are you sure?'
+      deleted: 'Course deleted'
+      edit_course: 'Edit Course'
+      update_course: 'Update'
+      delete_course: 'Delete'
+      create_course: 'Create Course'
+    dashboards:
+      new_course: 'New Course'
   errors:
     admin:
       unauthorized: "Sorry, we couldn't find the page"
@@ -15,15 +27,18 @@ en:
   helpers:
     new_model: 'New %{model}'
     edit_model: 'Edit %{model}'
-  admin:
-    courses:
-      form:
-        delete: 'Delete Course'
-        confirm_delete: 'Are you sure?'
-    deleted: 'Course deleted'
-
+    submit:
+      new_model: "New %{model}"
+      edit_model: "Edit %{model}"
   layouts:
     application:
       sign_out: 'Sign out'
       sign_in:  'Sign in'
       sign_up:  'Sign up'
+  teachers:
+    assignments:
+      edit_assignment: 'Edit Assignment'
+      update_assignment: 'Update'
+      delete_assignment: 'Delete'
+    dashboards:
+      new_assignment: 'New Assignment'
