@@ -11,6 +11,8 @@ class Admin::CoursesController < ApplicationController
   end
 
   def destroy
+    course.destroy
+    redirect_to admin_courses_path, notice: t('courses.deleted')
   end
 
   def index
@@ -33,7 +35,7 @@ class Admin::CoursesController < ApplicationController
   end
 
   def course
-    @course ||= Course.find_by(id: params[:id])
+    @course ||= Course.find(params[:id])
   end
 
   def authorize_admin

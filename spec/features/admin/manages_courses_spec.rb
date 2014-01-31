@@ -53,6 +53,28 @@ feature 'admin manages courses' do
     expect(page).to have_content("instructor: #{teacher2.last_name}")
   end
 
+  scenario 'by confirming delete before deleting a course' do
+    admin = create(:user, :admin)
+    course = create(:course)
+
+    visit edit_admin_course_path(course, as: admin)
+    delete_link = find_link(t('helpers.delete_model', model: 'Course'))
+    confirmation_text = delete_link['data-confirm']
+
+    expect(confirmation_text).to eq('Are you sure?')
+  end
+
+  scenario 'by deleting a course' do
+    admin = create(:user, :admin)
+    course = create(:course, name: 'History')
+
+    visit edit_admin_course_path(course, as: admin)
+    click_link t('admin.courses.form.delete')
+
+    expect(current_path).to eq(admin_courses_path)
+    expect(page).not_to have_content('History')
+  end
+
   context 'when selecting a period for which Teachers are already booked' do
     scenario 'booked Teachers are not available as options', js: true do
       admin = create(:user, :admin)

@@ -15,6 +15,13 @@ en:
   helpers:
     new_model: 'New %{model}'
     edit_model: 'Edit %{model}'
+  admin:
+    courses:
+      form:
+        delete: 'Delete Course'
+        confirm_delete: 'Are you sure?'
+    deleted: 'Course deleted'
+
   layouts:
     application:
       sign_out: 'Sign out'
