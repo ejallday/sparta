@@ -10,4 +10,3 @@
     = f.collection_select :teacher_id, Teacher.all, :id, :full_name
   .submit
     = f.submit
-  = link_to t('.delete'), admin_course_path(course), method: :delete, data: { confirm: t('.confirm_delete') }

@@ -1,14 +1,14 @@
 en:
   admin:
     courses:
-      form:
-        delete: 'Delete Course'
-        confirm_delete: 'Are you sure?'
       deleted: 'Course deleted'
       edit_course: 'Edit Course'
       update_course: 'Update'
       delete_course: 'Delete'
       create_course: 'Create Course'
+      edit:
+        delete: 'Delete Course'
+        confirm_delete: 'Are you sure?'
     dashboards:
       new_course: 'New Course'
   errors:
@@ -27,6 +27,7 @@ en:
   helpers:
     new_model: 'New %{model}'
     edit_model: 'Edit %{model}'
+    delete_model: 'Delete %{model}'
     submit:
       new_model: "New %{model}"
       edit_model: "Edit %{model}"

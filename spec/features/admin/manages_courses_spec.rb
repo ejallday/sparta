@@ -69,7 +69,7 @@ feature 'admin manages courses' do
     course = create(:course, name: 'History')
 
     visit edit_admin_course_path(course, as: admin)
-    click_link t('admin.courses.form.delete')
+    click_link t('admin.courses.edit.delete')
 
     expect(current_path).to eq(admin_courses_path)
     expect(page).not_to have_content('History')
