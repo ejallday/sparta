@@ -1,5 +1,5 @@
 class Teachers::CoursesController < ApplicationController
-  helper_method :course
+  helper_method :classroom
   helper_method :courses
 
   def index
@@ -9,6 +9,10 @@ class Teachers::CoursesController < ApplicationController
   end
 
   private
+
+  def classroom
+    Classroom.new(teacher, course)
+  end
 
   def course
     @course ||= Course.includes(:students).find(params[:id])

@@ -5,7 +5,7 @@ feature ' Teacher views live course view'do
     teacher = create(:teacher)
     course = create(:course, teacher: teacher)
 
-    visit teachers_course_path(course)
+    visit teachers_course_path(course, as: teacher.user)
 
     expect(current_path).to eq(teachers_course_path(course))
   end
@@ -26,7 +26,7 @@ feature ' Teacher views live course view'do
     student1 = create(:student, first_name: 'Timmy', last_name: 'Tebow')
     course.students = [student1]
 
-    visit teachers_course_path(course)
+    visit teachers_course_path(course, as: teacher.user)
 
     expect(page).to have_content(student1.initials)
   end

@@ -7,6 +7,7 @@ class Teachers::DashboardsController < ApplicationController
 
   private
 
+
   def teacher
     @teacher ||= Teacher.includes(:courses).find_by(user_id: current_user.id)
   end
