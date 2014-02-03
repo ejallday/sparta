@@ -15,6 +15,8 @@ FactoryGirl.define do
       if evaluator.last_name.present?
         user.last_name = evaluator.last_name
       end
+
+      user.save if user.changed.any?
     end
   end
 end

@@ -5,7 +5,7 @@ describe Course do
 
   describe '#instructor_last_name' do
     it 'delegates to its teacher' do
-    	course = Course.new(teacher: double(last_name: 'Bojangles'))
+    	course = Course.new(teacher: build(:teacher, last_name: 'Bojangles'))
       expect(course.instructor_last_name).to eq('Bojangles')
     end
   end

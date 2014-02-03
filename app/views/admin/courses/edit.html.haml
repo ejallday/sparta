@@ -1,1 +1,2 @@
 = render partial: 'form', locals: {course: course}
+= link_to t('.delete_course'), admin_course_path(course), method: :delete, data: { confirm: t('.confirm_delete') }
