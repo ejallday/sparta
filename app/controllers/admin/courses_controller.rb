@@ -40,7 +40,7 @@ class Admin::CoursesController < ApplicationController
 
   def authorize_admin
     unless current_user && current_user.admin?
-      flash[:error] = I18n.t('errors.admin.unauthorized')
+      flash[:error] = I18n.t('errors.unauthorized')
       redirect_to sign_in_path
     end
   end

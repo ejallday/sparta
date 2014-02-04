@@ -6,7 +6,7 @@ module Teachers
 
     def authorize_teacher
       unless current_user && current_user.teacher?
-        flash[:error] = I18n.t('errors.teacher.unauthorized')
+        flash[:error] = I18n.t('errors.unauthorized')
         redirect_to sign_in_path
       end
     end
