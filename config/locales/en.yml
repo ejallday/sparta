@@ -12,8 +12,7 @@ en:
     dashboards:
       new_course: 'New Course'
   errors:
-    admin:
-      unauthorized: "Sorry, we couldn't find the page"
+    unauthorized: "Sorry, we couldn't find the page"
   date:
     formats:
       default: '%m/%d/%Y'

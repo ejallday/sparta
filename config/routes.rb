@@ -10,7 +10,7 @@ Sparta::Application.routes.draw do
 
   namespace :teachers do
     resources :assignments
-    resources :courses, only: [:index]
+    resources :courses, only: [:index, :show]
     resource :dashboard, only: [:show]
   end
 
