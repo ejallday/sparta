@@ -1,6 +1,6 @@
-class Admin::DashboardsController < ApplicationController
-
-  def show
-
+module Admin
+  class DashboardsController < AdminController
+    def show
+    end
   end
 end
