@@ -1,4 +1,6 @@
-class Students::DashboardsController < ApplicationController
-  def show
+module Students
+  class DashboardsController < StudentsController
+    def show
+    end
   end
 end

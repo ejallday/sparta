@@ -1,5 +1,6 @@
-class Guardians::DashboardsController < ApplicationController
-  def show
-
+module Guardians
+  class DashboardsController < ApplicationController
+    def show
+    end
   end
 end
