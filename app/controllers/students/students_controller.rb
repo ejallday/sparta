@@ -2,6 +2,9 @@ module Students
   class StudentsController < ApplicationController
     before_filter :authorize_student
 
+    def show
+    end
+
     private
 
     def authorize_student

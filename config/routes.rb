@@ -3,9 +3,10 @@ Sparta::Application.routes.draw do
   resources :users, controller: 'users'
 
   namespace :admin do
-    resources :courses
     resource :dashboard, only: [:show]
     resources :available_teachers, only: [:index]
+    resources :courses
+    resources :students
   end
 
   namespace :teachers do
@@ -14,7 +15,7 @@ Sparta::Application.routes.draw do
     resource :dashboard, only: [:show]
   end
 
-  namespace :students do
+  namespace :students, only: [:show] do
     resource :dashboard, only: [:show]
   end
 

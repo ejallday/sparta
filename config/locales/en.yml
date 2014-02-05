@@ -9,8 +9,11 @@ en:
       edit:
         delete: 'Delete Course'
         confirm_delete: 'Are you sure?'
+    students:
+      create_student: 'Create Student'
     dashboards:
       new_course: 'New Course'
+      new_student: 'New Student'
   errors:
     unauthorized: "Sorry, we couldn't find the page"
   date:
