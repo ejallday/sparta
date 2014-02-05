@@ -1,0 +1,4 @@
+= form_for @student, url: admin_students_path(@student) do |form|
+  = render 'form', form: form
+  .submit-field
+    = form.submit
