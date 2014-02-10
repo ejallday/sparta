@@ -14,6 +14,7 @@ en:
     dashboards:
       new_course: 'New Course'
       new_student: 'New Student'
+      invite_guardian: 'Invite Guardian'
   errors:
     unauthorized: "Sorry, we couldn't find the page"
   date:
@@ -33,6 +34,11 @@ en:
     submit:
       new_model: "New %{model}"
       edit_model: "Edit %{model}"
+  invitations:
+    send_invitation: 'Send Invitation'
+    sent: 'Invitation sent'
+    sign_up: 'Sign up'
+  invite: 'Click here to follow your student on the SWOTBot.'
   layouts:
     application:
       sign_out: 'Sign out'

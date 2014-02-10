@@ -1,6 +1,9 @@
 Sparta::Application.routes.draw do
   resource :session, only: [:create, :destroy, :new]
   resources :users, controller: 'users'
+  resources :invitations do
+    resource :sign_up, controller: 'invitation_sign_ups'
+  end
 
   namespace :admin do
     resource :dashboard, only: [:show]

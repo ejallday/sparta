@@ -77,6 +77,9 @@ GEM
     diff-lcs (1.2.5)
     docile (1.1.2)
     dotenv (0.9.0)
+    email_spec (1.5.0)
+      launchy (~> 2.1)
+      mail (~> 2.2)
     email_validator (1.4.0)
       activemodel
     erubis (2.7.0)
@@ -238,6 +241,7 @@ DEPENDENCIES
   coffee-rails
   database_cleaner
   delayed_job_active_record (>= 4.0.0)
+  email_spec
   email_validator
   factory_girl_rails
   faker

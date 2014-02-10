@@ -1,5 +1,7 @@
 class Student < ActiveRecord::Base
   belongs_to :user
+  has_many :guardianships, dependent: :destroy
+  has_many :guardians, through: :guardianships
   has_many :enrollments
 
   delegate :first_name, :last_name, :full_name, :email, :username, :password, to: :user
