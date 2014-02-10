@@ -1,5 +1,5 @@
 class AssignmentForm
-  
+
   def initialize(user)
     @user = user
   end

@@ -14,18 +14,18 @@ feature 'Admin manages Students' do
     admin = create(:user, :admin)
 
     visit new_admin_student_path(as: admin)
-    fill_in :student_user_attributes_first_name, with: 'Timmy'
-    fill_in :student_user_attributes_last_name, with: 'Tebow'
-    fill_in :student_user_attributes_email, with: 'timmyt4eva@example.com'
-    fill_in :student_user_attributes_username, with: 'timmyt4eva'
-    fill_in :student_user_attributes_password, with: 'password'
+    fill_in 'First name', with: 'Timmy'
+    fill_in 'Last name', with: 'Tebow'
+    fill_in 'Email', with: 'timmyt4eva@example.com'
+    fill_in 'Username', with: 'timmyt4eva'
+    fill_in 'Password', with: 'password'
     click_button t('admin.students.create_student')
     student = Student.all.last
 
     expect(current_path).to eq(admin_student_path(student))
-    expect(page).to have_content("#{Student.human_attribute_name(:first_name)}: Timmy")
-    expect(page).to have_content("#{Student.human_attribute_name(:last_name)}: Tebow")
-    expect(page).to have_content("#{Student.human_attribute_name(:email)}: timmyt4eva@example.com")
-    expect(page).to have_content("#{Student.human_attribute_name(:username)}: timmyt4eva")
+    expect(page).to have_content('First name: Timmy')
+    expect(page).to have_content('Last name:  Tebow')
+    expect(page).to have_content('Email: timmyt4eva@example.com')
+    expect(page).to have_content('Username: timmyt4eva')
   end
 end
