@@ -1,0 +1,9 @@
+= form_for invitation do |form|
+  .select-field
+    = form.label 'Student'
+    = form.collection_select :student_id, Student.all, :id, :full_name
+  .text-field
+    = form.label :guardian_email
+    = form.text_field :guardian_email
+  .submit
+    = form.submit t('invitations.send_invitation')

@@ -41,6 +41,7 @@ group :test do
   gem 'capybara'
   gem 'capybara-webkit', '>= 1.0.0'
   gem 'database_cleaner'
+  gem 'email_spec'
   gem 'factory_girl_rails'
   gem 'launchy'
   gem 'poltergeist'

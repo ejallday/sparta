@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140203170756) do
+ActiveRecord::Schema.define(version: 20140210172206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,24 @@ ActiveRecord::Schema.define(version: 20140203170756) do
 
   create_table "guardians", force: true do |t|
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "guardianships", force: true do |t|
+    t.integer  "guardian_id"
+    t.integer  "student_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "guardianships", ["guardian_id"], name: "index_guardianships_on_guardian_id", using: :btree
+  add_index "guardianships", ["student_id"], name: "index_guardianships_on_student_id", using: :btree
+
+  create_table "invitations", force: true do |t|
+    t.integer  "student_id"
+    t.string   "guardian_email"
+    t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

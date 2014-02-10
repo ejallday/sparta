@@ -45,6 +45,8 @@ RSpec.configure do |config|
   config.include Features::FormHelpers, type: :feature
   config.include Features::I18nHelpers, type: :feature
   config.include AuthorizationHelpers
+  config.include EmailSpec::Helpers
+  config.include EmailSpec::Matchers
 end
 
 Capybara.register_driver :poltergeist_debug do |app|
