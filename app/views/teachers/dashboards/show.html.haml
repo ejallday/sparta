@@ -1,3 +1,9 @@
-= "Signed in as #{teacher.full_name}"
-= link_to t('new_assignment'), new_teachers_assignment_path
-= render courses
+%h1.page-header= "Signed in as #{teacher.full_name}"
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= "Period"
+        %th= "Course"
+    %tbody
+      = render courses

@@ -1,9 +1,17 @@
-#clearance.sign-up
-  %h2= t('.title')
-  = form_for @user do |form|
-    = render :partial => '/users/form', :object => form
-    .submit-field
-      = form.submit
-    .other-links
-      = link_to t('.sign_in'), sign_in_path
-= yield
+.login-container
+  .login-form-container
+    .login-heading
+      %h2 SPARTA
+    .robot
+      = image_tag("robot.png")
+    .login-form
+      -if flash[:notice]
+        %p.flash-notice
+          = flash[:notice]
+      #clearance.sign-up
+        %h2= t('.title')
+        = form_for @user do |form|
+          = render :partial => '/users/form', :object => form
+          .form-group
+            = form.submit class: 'btn btn-primary'
+      = yield

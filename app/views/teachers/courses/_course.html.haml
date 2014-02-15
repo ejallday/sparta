@@ -1,2 +1,3 @@
-%li.course
-  = link_to "#{course.name}", teachers_course_path(course)
+%tr.course
+  %td= "#{course.period}"
+  %td= link_to "#{course.name}", teachers_course_path(course)

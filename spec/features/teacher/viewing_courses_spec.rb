@@ -24,7 +24,7 @@ feature 'As a Teacher viewing Courses' do
   end
 
   def expect_courses_to_appear_in_the_following_order(course_names)
-    course_elements = page.all('.course')
+    course_elements = page.all('.course a')
     course_names.each_with_index do |name, index|
       expect(course_elements[index].text).to eq(name)
     end

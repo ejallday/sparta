@@ -3,20 +3,16 @@
   %head
     %meta{charset:"utf-8"}/
     %meta{content:"NOODP", name:"ROBOTS"}/
-    %title=page_title
+    %title SPARTA
     = stylesheet_link_tag :application, media: 'all'
+    = stylesheet_link_tag "//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
     = csrf_meta_tags
-  %body{class: body_class}
-    %header
-      - if signed_in?
-        = link_to t('layouts.application.sign_out'), sign_out_path, method: :delete
-      - else
-        = link_to t('layouts.application.sign_in'), sign_in_path
-      #flash
-        - flash.each do |key, value|
-          %div{class: "flash #{key}"}= value
-    %script(type='text/html' id='option-template')
-      <option value="<%= id %>"><%= full_name %></option>
-    = render 'flashes'
-    = yield
+  %body
+    = render 'navbar'
+    .container-fluid
+      .row
+        - if content_for?(:content)
+          = yield :content
+        - else
+          = yield
     = render 'javascript'

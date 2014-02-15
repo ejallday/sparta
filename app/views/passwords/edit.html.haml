@@ -1,9 +1,11 @@
 #clearance.password-reset
   %h2= t'.title'
   %p= t'.description'
-  = form_for :password_reset, url: user_password_path(@user, token: @user.confirmation_token), html: { method: :put } do |f|
-    .password-field
-      = f.label :password
-      = f.password_field :password
-    .submit-field
-      = f.submit
+  = flash[:notice]
+  .form-container
+    = form_for :password_reset, url: user_password_path(@user, token: @user.confirmation_token), html: { method: :put } do |f|
+      .form-group
+        = f.label :password
+        = f.password_field :password, class: 'form-control'
+      .form-group
+        = f.submit class: 'btn btn-primary'

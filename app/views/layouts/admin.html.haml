@@ -1,0 +1,10 @@
+- content_for :content do
+  .col-sm-3.col-md-2.sidebar
+    %ul.nav.nav-sidebar
+      %li= link_to t('new_course'), new_admin_course_path
+      %li= link_to t('new_student'), new_admin_student_path
+      %li= link_to t('invite_guardian'), new_invitation_path
+  .col-sm-9.col-md-10.main
+    = flash[:notice]
+    = yield
+= render template: 'layouts/application'

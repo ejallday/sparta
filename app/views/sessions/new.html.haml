@@ -1,3 +1,14 @@
-#clearance.sign-in
-  %h2= t'.title'
-  = render partial: '/sessions/form'
+.login-container
+  .login-form-container
+    .login-heading
+      %h2 SPARTA
+    .robot
+      = image_tag("robot.png")
+    .login-form
+      -if flash[:notice]
+        %p.flash-notice
+          = flash[:notice]
+      #clearance.sign-in
+        %h2= t'.title'
+        = render partial: '/sessions/form'
+

@@ -1,5 +1,6 @@
 module Teachers
   class TeachersController < ApplicationController
+    layout 'teacher'
     before_filter :authorize_teacher
 
     private
