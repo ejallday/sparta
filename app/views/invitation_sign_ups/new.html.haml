@@ -1,15 +1,7 @@
-.login-container
-  .login-form-container
-    .login-heading
-      %h2 SPARTA
-    .robot
-      = image_tag("robot.png")
-    .login-form
-      -if flash[:notice]
-        %p.flash-notice
-          = flash[:notice]
-      #clearance.sign-up
-        = form_for @user, url: invitation_sign_up_path(invitation) do |form|
-          = render 'users/form', form: form
-          .form-group
-            = form.submit class: 'btn btn-primary'
+= render 'shared/login'
+= render 'shared/flash'
+#clearance.sign-up
+  = form_for @user, url: invitation_sign_up_path(invitation) do |form|
+    = render 'users/form', form: form
+    .form-group
+      = form.submit class: 'btn btn-primary'
