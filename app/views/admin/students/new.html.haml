@@ -1,5 +1,5 @@
 .form-container
-  = form_for @student, url: admin_students_path(@student) do |form|
+  = form_for [:admin, @student] do |form|
     = render 'form', form: form
     .form-group
       = form.submit class: 'btn btn-primary'

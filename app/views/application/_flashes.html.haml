@@ -1,0 +1,8 @@
+- if flash[:notice]
+  %div.alert.alert-info= flash[:notice]
+
+- if flash[:error]
+  %div.alert.alert-danger= flash[:error]
+
+- flash.to_hash.except(:notice, :error).each do |key, value|
+  %div{class: "flash-#{key}"}= value
