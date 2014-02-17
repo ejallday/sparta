@@ -1,3 +1,3 @@
-%tr.course
-  %td= "#{course.period}"
-  %td= link_to "#{course.name}", teachers_course_path(course)
+%tr
+  %td.period= "#{course.period}"
+  %td.course= link_to "#{course.name}", teachers_course_path(course)

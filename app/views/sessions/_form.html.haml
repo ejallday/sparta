@@ -1,10 +1,10 @@
 = form_for :session, url: session_path do |form|
   .form-group
     = form.label :email
-    = form.text_field :email, placeholder: 'ex. therealmrt@sparta.org', class: 'form-control'
+    = form.text_field :email, class: 'form-control'
   .form-group
     = form.label :password
-    = form.password_field :password, placeholder: 'password', class: 'form-control'
+    = form.password_field :password, class: 'form-control'
   .form-group
     = form.submit class: 'btn btn-primary'
 .other-links
