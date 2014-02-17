@@ -1,3 +1,6 @@
-#clearance.sign-in
-  %h2= t'.title'
-  = render partial: '/sessions/form'
+- content_for :login_content do
+  = render 'flashes'
+  #clearance.sign-in
+    %h2= t'.title'
+    = render partial: '/sessions/form'
+= render 'shared/login'

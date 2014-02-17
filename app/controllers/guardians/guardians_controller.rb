@@ -1,5 +1,6 @@
 module Guardians
   class GuardiansController < ApplicationController
+    layout 'guardian'
     before_filter :authorize_guardian
 
     private

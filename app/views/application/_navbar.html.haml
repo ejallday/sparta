@@ -1,0 +1,17 @@
+%nav.navbar.navbar-inverse.navbar-fixed-top{role: "navigtion"}
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{href: "#"} SPARTA
+    .navbar-collapse.collapse
+      %ul.nav.navbar-nav.navbar-right
+        - if signed_in?
+          %li= link_to t('layouts.application.sign_out'), sign_out_path, method: :delete
+        - else
+          %li= link_to t('layouts.application.sign_in'), sign_in_path
+      %script(type='text/html' id='option-template')
+        <option value="<%= id %>"><%= full_name %></option>

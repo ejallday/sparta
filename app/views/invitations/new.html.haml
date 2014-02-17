@@ -1,9 +1,10 @@
-= form_for invitation do |form|
-  .select-field
-    = form.label 'Student'
-    = form.collection_select :student_id, Student.all, :id, :full_name
-  .text-field
-    = form.label :guardian_email
-    = form.text_field :guardian_email
-  .submit
-    = form.submit t('invitations.send_invitation')
+.form-container
+  = form_for invitation do |form|
+    .form-group
+      = form.label 'Student'
+      = form.collection_select :student_id, Student.all, :id, :full_name, class: 'form-control'
+    .form-group
+      = form.label :guardian_email
+      = form.text_field :guardian_email, class: 'form-control'
+    .form-group
+      = form.submit t('invitations.send_invitation'), class: 'btn btn-primary'

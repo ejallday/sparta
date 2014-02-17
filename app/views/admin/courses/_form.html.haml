@@ -1,12 +1,13 @@
-= form_for [:admin, course] do |f|
-  .text-field
-    = f.label :name
-    = f.text_field :name
-  .text-field
-    = f.label :period
-    = f.text_field :period
-  .select-field
-    = f.label 'Teacher'
-    = f.collection_select :teacher_id, Teacher.all, :id, :full_name
-  .submit
-    = f.submit
+.form-container
+  = form_for [:admin, course] do |f|
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.label :period
+      = f.text_field :period, class: 'form-control'
+    .form-group
+      = f.label 'Teacher'
+      = f.collection_select :teacher_id, Teacher.all, :id, :full_name, class: 'form-control'
+    .form-group
+      = f.submit class: 'btn btn-primary'

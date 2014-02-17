@@ -1,5 +1,6 @@
 module Students
   class StudentsController < ApplicationController
+    layout 'student'
     before_filter :authorize_student
 
     def show

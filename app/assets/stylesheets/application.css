@@ -1,0 +1,21 @@
+/*
+ *= require_self
+ *= require 'main.css'
+ *= require normalize-rails
+ *= require_tree
+ */
+
+body {
+  padding-top: 50px;
+}
+
+.sidebar {
+  position: fixed;
+  float: left;
+  height: 100%;
+  padding: 30px 20px 20px;
+  background-color: #f5f5f5;
+  border-right: 1px solid #eee;
+  padding-bottom: 100%;
+}
+

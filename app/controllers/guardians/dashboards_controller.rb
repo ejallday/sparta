@@ -1,5 +1,6 @@
 module Guardians
   class DashboardsController < ApplicationController
+    layout 'guardian'
     helper_method :guardian
     helper_method :students
 

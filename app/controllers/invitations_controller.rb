@@ -1,4 +1,5 @@
 class InvitationsController < ApplicationController
+  include PolymorphicLayout
   helper_method :invitation
 
   def new

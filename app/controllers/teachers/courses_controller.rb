@@ -2,6 +2,7 @@ module Teachers
   class CoursesController < TeachersController
     helper_method :classroom
     helper_method :courses
+    helper_method :teacher
 
     def index
     end
