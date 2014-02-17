@@ -1,6 +1,8 @@
 /*
  *= require_self
  *= require 'main.css'
+ *= require normalize-rails
+ *= require_tree
  */
 
 body {
