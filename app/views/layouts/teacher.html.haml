@@ -1,8 +1,3 @@
-- content_for :content do
-  .col-sm-3.col-md-2.sidebar
-    %ul.nav.nav-sidebar
-      %li= link_to t('new_assignment'), new_teachers_assignment_path
-  .col-sm-9.col-md-10.main
-    = flash[:notice]
-    = yield
-= render template: 'layouts/application'
+- content_for :links do
+  %li= link_to t('new_assignment'), new_teachers_assignment_path
+= render template: 'layouts/role'

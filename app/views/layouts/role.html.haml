@@ -1,0 +1,8 @@
+- content_for :content do
+  .col-sm-3.col-md-2.sidebar
+    %ul.nav.nav-sidebar
+      = yield :links
+  .col-sm-9.col-md-10.main
+    = render 'shared/flash'
+    = yield
+= render template: 'layouts/application'
