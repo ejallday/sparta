@@ -1,6 +1,7 @@
 module Teachers
   class AssignmentsController < TeachersController
     helper_method :form
+    helper_method :available_courses
 
     def create
       form.submit(assignment_params)
@@ -22,6 +23,14 @@ module Teachers
 
     def form
       @form ||= AssignmentForm.new(current_user)
+    end
+
+    def available_courses
+      teacher.courses
+    end
+
+    def teacher
+      current_user.teacher
     end
   end
 end
