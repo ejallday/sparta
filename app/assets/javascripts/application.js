@@ -1,4 +1,6 @@
 //= require jquery
 //= require jquery_ujs
-//= require underscore/underscore
+//= require angular
+//= require angularjs-rails-resource
+//= require lodash
 //= require_tree .
