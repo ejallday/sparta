@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'admin manages courses' do
+feature 'admin manages courses', js: true do
   scenario 'by navigating to new course page' do
     admin = create(:user, :admin)
 
@@ -21,7 +21,8 @@ feature 'admin manages courses' do
     click_button t('admin.courses.create_course')
 
     expect(current_path).to eq(admin_courses_path)
-    expect(page).to have_content("History, period 1, instructor: #{teacher.last_name}")
+    expect(page).to have_content('History')
+    expect(page).to have_content('Bigelow')
   end
 
   scenario 'by navigating to course edit page' do
@@ -49,8 +50,8 @@ feature 'admin manages courses' do
 
     expect(current_path).to eq(admin_courses_path)
     expect(page).to have_content('Physical Education')
-    expect(page).to have_content('period 5')
-    expect(page).to have_content("instructor: #{teacher2.last_name}")
+    expect(page).to have_content('5')
+    expect(page).to have_content('Adams')
   end
 
   scenario 'by confirming delete before deleting a course' do
@@ -75,8 +76,53 @@ feature 'admin manages courses' do
     expect(page).not_to have_content('History')
   end
 
+  scenario 'views and filters courses with text search' do
+    admin = create(:user, :admin)
+    teacher1 = create(:teacher, last_name: 'Bojangles')
+    teacher2 = create(:teacher, last_name: 'Adams')
+    history = create(:course, name: 'History', period: '1', teacher: teacher1)
+    science = create(:course, name: 'Science', period: '4', teacher: teacher2)
+    english = create(:course, name: 'English', period: '5', teacher: teacher2)
+
+    visit admin_courses_path(as: admin)
+
+    expect(displayed_course_list).to eq([history, science, english])
+
+    fill_in 'search', with: 'Sci'
+
+    expect(displayed_course_list).to eq([science])
+  end
+
+  scenario 'views and filters courses with text search' do
+    admin = create(:user, :admin)
+    teacher1 = create(:teacher, last_name: 'Bojangles')
+    teacher2 = create(:teacher, last_name: 'Adams')
+    teacher3 = create(:teacher, last_name: 'Warbelow')
+    teacher4 = create(:teacher, last_name: 'Allen')
+    history1 = create(:course, name: 'History', period: '1', teacher: teacher1)
+    history2 = create(:course, name: 'History', period: '2', teacher: teacher1)
+    history4 = create(:course, name: 'History', period: '1', teacher: teacher4)
+    science = create(:course, name: 'Science', period: '1', teacher: teacher2)
+    english = create(:course, name: 'English', period: '1', teacher: teacher3)
+
+    visit admin_courses_path(as: admin)
+
+    expect(displayed_course_list).to match_array([history1, history2, history4,
+                                                  science, english])
+    select '1', from: 'Period'
+
+    expect(displayed_course_list).to match_array([history1, science, english, history4])
+
+    select 'History', from: 'Course'
+
+    expect(displayed_course_list).to match_array([history1, history4])
+
+    select 'Allen', from: 'Teacher'
+
+    expect(displayed_course_list).to match_array([history4])
+  end
   context 'when selecting a period for which Teachers are already booked' do
-    scenario 'booked Teachers are not available as options', js: true do
+    scenario 'booked Teachers are not available as options' do
       admin = create(:user, :admin)
       teacher1 = create(:teacher, first_name: 'Tom', last_name: 'Bojangles')
       teacher2 = create(:teacher, first_name: 'Quincy', last_name: 'Adams')
@@ -101,5 +147,15 @@ feature 'admin manages courses' do
 
   def select_options_content
     page.all('option').map(&:text)
+  end
+
+  def displayed_course_list
+    Course.find(displayed_course_ids)
+  end
+
+  def displayed_course_ids
+    page.all('.course-record').map do |el|
+      el['data-course-id']
+    end
   end
 end
