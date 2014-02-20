@@ -11,6 +11,9 @@ en:
         confirm_delete: 'Are you sure?'
     students:
       create_student: 'Create Student'
+      index:
+        first_name: 'First Name'
+        last_name: 'Last Name'
     dashboards:
       new_course: 'New Course'
       new_student: 'New Student'

@@ -28,4 +28,38 @@ feature 'Admin manages Students' do
     expect(page).to have_content('Email: timmyt4eva@example.com')
     expect(page).to have_content('Username: timmyt4eva')
   end
+
+  scenario 'views all students', js: true do
+    admin = create(:user, :admin)
+    create(:student, first_name: 'Jim', last_name: 'Jones')
+    create(:student, first_name: 'Laura', last_name: 'Thompson')
+
+    visit admin_students_path(as: admin)
+
+    expect(page).to have_content('Jim Jones')
+    expect(page).to have_content('Laura Thompson')
+  end
+
+  scenario 'filters students', js: true do
+    admin = create(:user, :admin)
+    create(:student, first_name: 'Jim', last_name: 'Jones')
+    create(:student, first_name: 'Laura', last_name: 'Thompson')
+    create(:student, first_name: 'Jim', last_name: 'Griffin')
+
+    visit admin_students_path(as: admin)
+
+    expect(page).to have_student_count(3)
+
+    fill_in 'search', with: 'Jim'
+
+    expect(page).to have_student_count(2)
+
+    fill_in 'search', with: 'Thompson'
+
+    expect(page).to have_student_count(1)
+  end
+
+  def have_student_count(count)
+    have_css('tr.student-record', count: count)
+  end
 end
