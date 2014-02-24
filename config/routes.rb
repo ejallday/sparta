@@ -11,6 +11,7 @@ Sparta::Application.routes.draw do
     resources :courses
     resources :guardians
     resources :students
+    resources :teachers
   end
 
   namespace :teachers do
