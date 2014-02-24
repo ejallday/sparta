@@ -6,7 +6,7 @@ feature 'Admin invites Guardian to become Guardian of Student' do
     student = create(:student, first_name: 'Tom', last_name: 'Jones')
 
     visit admin_dashboard_path(as: admin)
-    click_link t('admin.dashboards.invite_guardian')
+    click_link t('.layouts.admin.invite_guardian')
     select student.full_name, from: :invitation_student_id
     fill_in :invitation_guardian_email, with: 'eric@example.com'
     click_button t('invitations.send_invitation')

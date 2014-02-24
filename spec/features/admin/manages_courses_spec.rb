@@ -6,7 +6,7 @@ feature 'admin manages courses', js: true do
 
     visit admin_dashboard_path(as: admin)
 
-    click_link t('admin.dashboards.new_course')
+    click_link t('.layouts.admin.new_course')
     expect(current_path).to eq(new_admin_course_path)
   end
 
@@ -15,7 +15,7 @@ feature 'admin manages courses', js: true do
 
     visit admin_dashboard_path(as: admin)
 
-    click_link t('admin.dashboards.courses')
+    click_link t('.layouts.admin.courses')
     expect(current_path).to eq(admin_courses_path)
   end
 
@@ -24,7 +24,7 @@ feature 'admin manages courses', js: true do
 
     visit admin_dashboard_path(as: admin)
 
-    click_link t('admin.dashboards.guardians')
+    click_link t('.layouts.admin.guardians')
     expect(current_path).to eq(admin_guardians_path)
   end
 
@@ -33,7 +33,7 @@ feature 'admin manages courses', js: true do
 
     visit admin_dashboard_path(as: admin)
 
-    click_link t('admin.dashboards.students')
+    click_link t('.layouts.admin.students')
     expect(current_path).to eq(admin_students_path)
   end
 
