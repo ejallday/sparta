@@ -1,6 +1,8 @@
 module Admin
   class CoursesController < AdminController
     helper_method :course
+    helper_method :courses
+    respond_to :html, :json
 
     def create
       @course = Course.create!(course_params)
@@ -16,7 +18,7 @@ module Admin
     end
 
     def index
-      @courses = Course.all
+      respond_with courses
     end
 
     def new
@@ -36,6 +38,10 @@ module Admin
 
     def course
       @course ||= Course.find(params[:id])
+    end
+
+    def courses
+      @courses ||= Course.includes(teacher: :user)
     end
   end
 end

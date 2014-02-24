@@ -1,2 +1,34 @@
-%ul
-  = render @courses
+%div(ng-controller="CoursesCtrl")
+  %label
+    = t('.search')
+    %input(ng-model="textSearch")
+  %label
+    = t('.period')
+    %select(ng-model="search.period"
+      ng-options="period for period in courses | uniqueProperty:'period'")
+      %option(value="") All Periods
+  %label
+    = t('.course')
+    %select(ng-model="search.name"
+      ng-options="name for name in courses | uniqueProperty:'name'")
+      %option(value="") All Courses
+  %label
+    = t('.teacher')
+    %select(ng-model="search.instructorLastName"
+      ng-options="name for name in courses | uniqueProperty:'instructorLastName'")
+      %option(value="") All Teachers
+  %table.table.table-striped.table-responsive
+    %thead
+      %tr
+        %th= t('.period')
+        %th= t('.course')
+        %th= t('.teacher')
+        %th
+    %tbody
+      %tr.course-record(ng-repeat="course in courses | filter:textSearch | filter:search:semiStrict"
+        data-course-id="{{ course.id }}")
+        %td {{ course.period }}
+        %td {{ course.name }}
+        %td {{ course.instructorLastName }}
+        %td
+          %a(href="/admin/courses/{{ course.id }}/edit")= t('.edit_course')

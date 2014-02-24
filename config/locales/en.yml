@@ -9,6 +9,11 @@ en:
       edit:
         delete: 'Delete Course'
         confirm_delete: 'Are you sure?'
+      index:
+        course:  'Course'
+        period:  'Period'
+        search:  'Search'
+        teacher: 'Teacher'
     students:
       create_student: 'Create Student'
       index:
