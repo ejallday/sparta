@@ -5,8 +5,8 @@ feature 'admin manages courses', js: true do
     admin = create(:user, :admin)
 
     visit admin_dashboard_path(as: admin)
-
     click_link t('.layouts.admin.new_course')
+
     expect(current_path).to eq(new_admin_course_path)
   end
 
@@ -14,8 +14,8 @@ feature 'admin manages courses', js: true do
     admin = create(:user, :admin)
 
     visit admin_dashboard_path(as: admin)
-
     click_link t('.layouts.admin.courses')
+
     expect(current_path).to eq(admin_courses_path)
   end
 
@@ -23,8 +23,8 @@ feature 'admin manages courses', js: true do
     admin = create(:user, :admin)
 
     visit admin_dashboard_path(as: admin)
-
     click_link t('.layouts.admin.guardians')
+
     expect(current_path).to eq(admin_guardians_path)
   end
 
@@ -32,8 +32,8 @@ feature 'admin manages courses', js: true do
     admin = create(:user, :admin)
 
     visit admin_dashboard_path(as: admin)
-
     click_link t('.layouts.admin.students')
+
     expect(current_path).to eq(admin_students_path)
   end
 
