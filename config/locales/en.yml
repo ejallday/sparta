@@ -39,6 +39,7 @@ en:
         first_name: 'First Name'
         last_name: 'Last Name'
     teachers:
+      create_teacher: 'Create Teacher'
       index:
         first_name:  'First Name'
         last_name:  'Last Name'
