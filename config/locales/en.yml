@@ -25,6 +25,9 @@ en:
         first_name: 'First Name'
         last_name: 'Last Name'
     dashboards:
+      courses: 'Courses'
+      guardians: 'Guardians'
+      students: 'Students'
       new_course: 'New Course'
       new_student: 'New Student'
       invite_guardian: 'Invite Guardian'
