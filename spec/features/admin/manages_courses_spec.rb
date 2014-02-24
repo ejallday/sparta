@@ -28,8 +28,6 @@ feature 'admin manages courses', js: true do
     expect(current_path).to eq(admin_guardians_path)
   end
 
-<<<<<<< HEAD
-=======
   scenario 'by navigating students page' do
     admin = create(:user, :admin)
 
@@ -39,7 +37,6 @@ feature 'admin manages courses', js: true do
     expect(current_path).to eq(admin_students_path)
   end
 
->>>>>>> 1485f59... Fix i18n Links for Admin layout
   scenario 'fill out new course form' do
     admin = create(:user, :admin)
     teacher = create(:teacher, first_name: 'Duce', last_name: 'Bigelow')
