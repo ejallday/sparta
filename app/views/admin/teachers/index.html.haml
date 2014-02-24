@@ -1,0 +1,13 @@
+%div(ng-controller="TeachersCtrl")
+  %label
+    = t('.search')
+    %input(ng-model="search")
+  %table.table.table-striped.table-responsive
+    %thead
+      %tr
+        %th= t('.first_name')
+        %th= t('.last_name')
+    %tbody
+      %tr.teacher-record(ng-repeat="teacher in teachers | filter:search")
+        %td {{ teacher.firstName }}
+        %td {{ teacher.lastName }}
