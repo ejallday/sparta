@@ -1,19 +1,19 @@
 %div(ng-controller="CoursesCtrl")
   %label
-    Search
-    %input#search(ng-model="textSearch")
+    = t('.search')
+    %input(ng-model="textSearch")
   %label
-    Period
+    = t('.period')
     %select(ng-model="search.period"
       ng-options="period for period in courses | uniqueProperty:'period'")
       %option(value="") All Periods
   %label
-    Course
+    = t('.course')
     %select(ng-model="search.name"
       ng-options="name for name in courses | uniqueProperty:'name'")
       %option(value="") All Courses
   %label
-    Teacher
+    = t('.teacher')
     %select(ng-model="search.instructorLastName"
       ng-options="name for name in courses | uniqueProperty:'instructorLastName'")
       %option(value="") All Teachers

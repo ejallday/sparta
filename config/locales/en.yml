@@ -10,8 +10,9 @@ en:
         delete: 'Delete Course'
         confirm_delete: 'Are you sure?'
       index:
-        period: 'Period'
-        course: 'Course'
+        course:  'Course'
+        period:  'Period'
+        search:  'Search'
         teacher: 'Teacher'
     students:
       create_student: 'Create Student'

@@ -88,7 +88,7 @@ feature 'admin manages courses', js: true do
 
     expect(displayed_course_list).to eq([history, science, english])
 
-    fill_in 'search', with: 'Sci'
+    fill_in t('.admin.courses.index.search'), with: 'Sci'
 
     expect(displayed_course_list).to eq([science])
   end
@@ -109,18 +109,19 @@ feature 'admin manages courses', js: true do
 
     expect(displayed_course_list).to match_array([history1, history2, history4,
                                                   science, english])
-    select '1', from: 'Period'
+    select '1', from: t('.admin.courses.index.period')
 
     expect(displayed_course_list).to match_array([history1, science, english, history4])
 
-    select 'History', from: 'Course'
+    select 'History', from: t('.admin.courses.index.course')
 
     expect(displayed_course_list).to match_array([history1, history4])
 
-    select 'Allen', from: 'Teacher'
+    select 'Allen', from: t('.admin.courses.index.teacher')
 
     expect(displayed_course_list).to match_array([history4])
   end
+
   context 'when selecting a period for which Teachers are already booked' do
     scenario 'booked Teachers are not available as options' do
       admin = create(:user, :admin)
