@@ -10,6 +10,15 @@ feature 'admin manages courses', js: true do
     expect(current_path).to eq(new_admin_course_path)
   end
 
+  scenario 'by navigating courses page' do
+    admin = create(:user, :admin)
+
+    visit admin_dashboard_path(as: admin)
+
+    click_link t('admin.dashboards.courses')
+    expect(current_path).to eq(admin_courses_path)
+  end
+
   scenario 'by navigating guardians page' do
     admin = create(:user, :admin)
 
@@ -17,6 +26,15 @@ feature 'admin manages courses', js: true do
 
     click_link t('admin.dashboards.guardians')
     expect(current_path).to eq(admin_guardians_path)
+  end
+
+  scenario 'by navigating students page' do
+    admin = create(:user, :admin)
+
+    visit admin_dashboard_path(as: admin)
+
+    click_link t('admin.dashboards.students')
+    expect(current_path).to eq(admin_students_path)
   end
 
   scenario 'fill out new course form' do
