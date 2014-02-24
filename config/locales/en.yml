@@ -1,4 +1,17 @@
 en:
+  layouts:
+    application:
+      sign_out: 'Sign out'
+      sign_in:  'Sign in'
+      sign_up:  'Sign up'
+    admin:
+      courses: 'Courses'
+      guardians: 'Guardians'
+      students: 'Students'
+      teachers: 'Teachers'
+      new_course: 'New Course'
+      new_student: 'New Student'
+      invite_guardian: 'Invite Guardian'
   admin:
     courses:
       deleted: 'Course deleted'
@@ -24,11 +37,18 @@ en:
       index:
         first_name: 'First Name'
         last_name: 'Last Name'
+    teachers:
+      index:
+        first_name:  'First Name'
+        last_name:  'Last Name'
+        search:  'Search'
+  teachers:
+    assignments:
+      edit_assignment: 'Edit Assignment'
+      update_assignment: 'Update'
+      delete_assignment: 'Delete'
     dashboards:
-      guardians: 'Guardians'
-      new_course: 'New Course'
-      new_student: 'New Student'
-      invite_guardian: 'Invite Guardian'
+      new_assignment: 'New Assignment'
   errors:
     unauthorized: "Sorry, we couldn't find the page"
   date:
@@ -53,15 +73,3 @@ en:
     sent: 'Invitation sent'
     sign_up: 'Sign up'
   invite: 'Click here to follow your student on the SWOTBot.'
-  layouts:
-    application:
-      sign_out: 'Sign out'
-      sign_in:  'Sign in'
-      sign_up:  'Sign up'
-  teachers:
-    assignments:
-      edit_assignment: 'Edit Assignment'
-      update_assignment: 'Update'
-      delete_assignment: 'Delete'
-    dashboards:
-      new_assignment: 'New Assignment'
