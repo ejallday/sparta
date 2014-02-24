@@ -9,6 +9,7 @@ Sparta::Application.routes.draw do
     resource :dashboard, only: [:show]
     resources :available_teachers, only: [:index]
     resources :courses
+    resources :guardians
     resources :students
   end
 
