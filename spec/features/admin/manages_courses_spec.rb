@@ -6,8 +6,17 @@ feature 'admin manages courses', js: true do
 
     visit admin_dashboard_path(as: admin)
 
-    click_link t('admin.dashboards.new_course')
+    click_link t('.layouts.admin.new_course')
     expect(current_path).to eq(new_admin_course_path)
+  end
+
+  scenario 'by navigating courses page' do
+    admin = create(:user, :admin)
+
+    visit admin_dashboard_path(as: admin)
+
+    click_link t('.layouts.admin.courses')
+    expect(current_path).to eq(admin_courses_path)
   end
 
   scenario 'by navigating guardians page' do
@@ -15,10 +24,22 @@ feature 'admin manages courses', js: true do
 
     visit admin_dashboard_path(as: admin)
 
-    click_link t('admin.dashboards.guardians')
+    click_link t('.layouts.admin.guardians')
     expect(current_path).to eq(admin_guardians_path)
   end
 
+<<<<<<< HEAD
+=======
+  scenario 'by navigating students page' do
+    admin = create(:user, :admin)
+
+    visit admin_dashboard_path(as: admin)
+
+    click_link t('.layouts.admin.students')
+    expect(current_path).to eq(admin_students_path)
+  end
+
+>>>>>>> 1485f59... Fix i18n Links for Admin layout
   scenario 'fill out new course form' do
     admin = create(:user, :admin)
     teacher = create(:teacher, first_name: 'Duce', last_name: 'Bigelow')
