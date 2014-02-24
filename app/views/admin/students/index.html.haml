@@ -1,0 +1,13 @@
+%div(ng-controller="StudentsCtrl")
+  %label
+    Search
+    %input#search(ng-model="search")
+  %table.table.table-striped.table-responsive
+    %thead
+      %tr
+        %th= t('.first_name')
+        %th= t('.last_name')
+    %tbody
+      %tr.student-record(ng-repeat="student in students | filter:search")
+        %td {{ student.firstName }}
+        %td {{ student.lastName }}

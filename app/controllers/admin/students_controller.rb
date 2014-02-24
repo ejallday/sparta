@@ -1,7 +1,9 @@
 module Admin
   class StudentsController < AdminController
     helper_method :student
+    helper_method :students
     helper_method :form
+    respond_to :html, :json
 
     def new
       @student = Student.new
@@ -18,6 +20,10 @@ module Admin
     end
 
     def show
+    end
+
+    def index
+      respond_with students
     end
 
     private
@@ -39,6 +45,10 @@ module Admin
 
     def student
       @student ||= Student.find(params[:id])
+    end
+
+    def students
+      @students ||= Student.includes(:user)
     end
   end
 end

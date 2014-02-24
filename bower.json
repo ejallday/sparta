@@ -1,0 +1,14 @@
+{
+  "name": "SPARTA",
+  "version": "1.0.0",
+  "private": true,
+
+  "dependencies": {
+    "angular": "1.2.*",
+    "angularjs-rails-resource": "master",
+    "lodash": "latest"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.2.*"
+  }
+}

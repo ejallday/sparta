@@ -10,6 +10,8 @@ GEM
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
+    active_model_serializers (0.8.1)
+      activemodel (>= 3.0)
     activemodel (4.0.2)
       activesupport (= 4.0.2)
       builder (~> 3.1.0)
@@ -41,7 +43,6 @@ GEM
     bourbon (3.1.8)
       sass (>= 3.2.0)
       thor
-    bower-rails (0.7.0)
     builder (3.1.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -229,13 +230,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   airbrake
   awesome_print
   bcrypt-ruby
   better_errors
   binding_of_caller
   bourbon
-  bower-rails
   capybara
   capybara-webkit (>= 1.0.0)
   clearance
