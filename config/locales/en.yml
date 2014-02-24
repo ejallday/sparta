@@ -11,6 +11,7 @@ en:
       teachers: 'Teachers'
       new_course: 'New Course'
       new_student: 'New Student'
+      new_teacher: 'New Teacher'
       invite_guardian: 'Invite Guardian'
   admin:
     courses:

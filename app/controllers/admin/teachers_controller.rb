@@ -3,6 +3,10 @@ module Admin
     helper_method :teachers
     respond_to :html, :json
 
+    def new
+      @teacher = Teacher.new
+    end
+
     def index
       respond_with teachers
     end

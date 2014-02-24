@@ -1,6 +1,15 @@
 require 'spec_helper'
 
 feature 'Admin manages Teachers', js: true do
+  scenario 'by navigating to new Teacher page' do
+    admin = create(:user, :admin)
+
+    visit admin_dashboard_path(as: admin)
+
+    click_link t('.layouts.admin.new_teacher')
+    expect(current_path).to eq(new_admin_teacher_path)
+  end
+
   scenario 'by navigating to Teachers page' do
     admin = create(:user, :admin)
 
