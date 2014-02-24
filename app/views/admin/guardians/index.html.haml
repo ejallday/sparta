@@ -1,11 +1,13 @@
-%div
+%div(ng-controller="GuardiansCtrl")
+  %label
+    = t('.search')
+    %input(ng-model="search")
   %table.table.table-striped.table-responsive
     %thead
       %tr
         %th= t('.first_name')
         %th= t('.last_name')
     %tbody
-      - guardians.each do |guardian|
-        %tr
-          %td= guardian.first_name
-          %td= guardian.last_name
+      %tr.guardian-record(ng-repeat="guardian in guardians | filter: search")
+        %td {{ guardian.firstName }}
+        %td {{ guardian.lastName }}

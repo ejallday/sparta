@@ -1,9 +1,10 @@
 module Admin
   class GuardiansController < AdminController
     helper_method :guardians
+    respond_to :html, :json
 
     def index
-      guardians
+      respond_with guardians
     end
 
     private
