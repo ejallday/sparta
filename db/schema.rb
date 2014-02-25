@@ -65,8 +65,8 @@ ActiveRecord::Schema.define(version: 20140210172206) do
   end
 
   create_table "guardianships", force: true do |t|
-    t.integer  "guardian_id"
-    t.integer  "student_id"
+    t.integer  "guardian_id", null: false
+    t.integer  "student_id",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -75,9 +75,9 @@ ActiveRecord::Schema.define(version: 20140210172206) do
   add_index "guardianships", ["student_id"], name: "index_guardianships_on_student_id", using: :btree
 
   create_table "invitations", force: true do |t|
-    t.integer  "student_id"
-    t.string   "guardian_email"
-    t.string   "token"
+    t.integer  "student_id",     null: false
+    t.string   "guardian_email", null: false
+    t.string   "token",          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
