@@ -1,0 +1,5 @@
+.form-container
+  = form_for [:admin, @teacher] do |form|
+    = render 'form', form: form
+    .form-group
+      = form.submit class: 'btn btn-primary'

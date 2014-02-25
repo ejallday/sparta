@@ -1,6 +1,34 @@
 require 'spec_helper'
 
 feature 'Admin manages Teachers', js: true do
+  scenario 'by navigating to new Teacher page' do
+    admin = create(:user, :admin)
+
+    visit admin_dashboard_path(as: admin)
+
+    click_link t('.layouts.admin.new_teacher')
+    expect(current_path).to eq(new_admin_teacher_path)
+  end
+
+  scenario 'fill out new Teacher form' do
+    admin = create(:user, :admin)
+
+    visit new_admin_teacher_path(as: admin)
+    fill_in 'First name', with: 'Timmy'
+    fill_in 'Last name', with: 'Tebow'
+    fill_in 'Email', with: 'timmyt4eva@example.com'
+    fill_in 'Username', with: 'timmyt4eva'
+    fill_in 'Password', with: 'password'
+    click_button t('admin.teachers.create_teacher')
+    teacher = Teacher.last
+
+    expect(current_path).to eq(admin_teacher_path(teacher))
+    expect(page).to have_content('Timmy')
+    expect(page).to have_content('Tebow')
+    expect(page).to have_content('timmyt4eva@example.com')
+    expect(page).to have_content('timmyt4eva')
+  end
+
   scenario 'by navigating to Teachers page' do
     admin = create(:user, :admin)
 
