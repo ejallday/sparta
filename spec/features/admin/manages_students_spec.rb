@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-feature 'Admin manages Students' do
+feature 'Admin manages Students', js: true do
   scenario 'by navigating to new Student page' do
     admin = create(:user, :admin)
 
     visit admin_dashboard_path(as: admin)
 
-    click_link t('admin.dashboards.new_student')
+    click_link t('.layouts.admin.new_student')
     expect(current_path).to eq(new_admin_student_path)
   end
 
@@ -29,7 +29,7 @@ feature 'Admin manages Students' do
     expect(page).to have_content('Username: timmyt4eva')
   end
 
-  scenario 'views all students', js: true do
+  scenario 'views all students' do
     admin = create(:user, :admin)
     create(:student, first_name: 'Jim', last_name: 'Jones')
     create(:student, first_name: 'Laura', last_name: 'Thompson')
@@ -40,7 +40,7 @@ feature 'Admin manages Students' do
     expect(page).to have_content('Laura Thompson')
   end
 
-  scenario 'filters students', js: true do
+  scenario 'filters students' do
     admin = create(:user, :admin)
     create(:student, first_name: 'Jim', last_name: 'Jones')
     create(:student, first_name: 'Laura', last_name: 'Thompson')
