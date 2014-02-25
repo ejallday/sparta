@@ -1,8 +1,10 @@
-say 'Creating 150 Students...'
+say 'Creating 150 Guardians and Guardianships'
 
-150.times do
+students = Student.all
+
+students.each do |student|
   first_name = Faker::Name.first_name
-  last_name = Faker::Name.last_name
+  last_name = student.last_name
   user = User.create!(
     first_name: first_name,
     last_name: last_name,
@@ -10,5 +12,7 @@ say 'Creating 150 Students...'
     username: "#{first_name}#{last_name}".downcase,
     password: 'password'
   )
-  Student.create!(user: user)
+  guardian = Guardian.create!(user: user)
+
+  Guardianship.create!(student: student, guardian: guardian)
 end
