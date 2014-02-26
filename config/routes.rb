@@ -16,12 +16,18 @@ Sparta::Application.routes.draw do
 
   namespace :teachers do
     resources :assignments
-    resources :courses, only: [:index, :show]
+    resources :courses, only: [:index, :show] do
+      resources :students
+    end
     resource :dashboard, only: [:show]
   end
 
   namespace :students, only: [:show] do
     resource :dashboard, only: [:show]
+  end
+
+  resources :enrollments, only: [] do
+    resources :student_actions, only: [:create]
   end
 
   namespace :guardians do

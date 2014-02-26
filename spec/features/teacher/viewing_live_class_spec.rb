@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature ' Teacher views live course view'do
+feature ' Teacher views course view' do
   scenario 'by visiting Teacher course' do
     teacher = create(:teacher)
     course = create(:course, teacher: teacher)
@@ -14,7 +14,7 @@ feature ' Teacher views live course view'do
     teacher = create(:teacher)
     course = create(:course, name: 'Science', teacher: teacher)
 
-    visit teachers_dashboard_path(as: teacher.user)
+    visit teachers_courses_path(as: teacher.user)
     click_link('Science')
 
     expect(current_path).to eq(teachers_course_path(course))

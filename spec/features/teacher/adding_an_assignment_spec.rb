@@ -4,8 +4,8 @@ feature 'teacher adding an assignment' do
 
   scenario 'by navigating to new assignment page' do
     teacher = create(:teacher)
-    visit teachers_dashboard_path(as: teacher.user)
-    click_link t('teachers.dashboards.new_assignment')
+    visit teachers_courses_path(as: teacher.user)
+    click_link t('.layouts.teacher.new_assignment')
     expect(current_path).to eq(new_teachers_assignment_path)
   end
 

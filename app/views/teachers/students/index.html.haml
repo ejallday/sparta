@@ -1,6 +1,6 @@
 .seating-chart.col-sm-6.col-md-7
   %ul.classroom
-    - classroom.students.each do |student|
+    - students.each do |student|
       %li.student{ data: { id: student.id }}
         = link_to t('.student_initials', initials: student.initials),
           teachers_course_student_path(classroom.course, student)

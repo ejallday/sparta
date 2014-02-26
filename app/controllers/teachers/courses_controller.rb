@@ -17,7 +17,7 @@ module Teachers
     end
 
     def course
-      @course ||= Course.includes(:students).find(params[:id])
+      @course ||= Course.includes(students: :user).find(params[:id])
     end
 
     def courses

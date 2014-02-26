@@ -1,0 +1,7 @@
+%h1 Submit a behavior for #{student.full_name}
+= form_for [enrollment, student_action] do |form|
+  .form-group
+    = form.label t('.student_action')
+    = form.text_field :name, class: 'form-control'
+  .form-group
+    = form.submit class: 'btn btn-primary', value: t('.submit')
