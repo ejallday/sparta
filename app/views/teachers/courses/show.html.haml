@@ -7,9 +7,10 @@
       %input.form-control#student_action_name(ng-model="studentAction.name" required)
     %ul.classroom
       - classroom.students.each do |student|
-        %li(ng-click="studentAction.studentId = #{student.id}")
-          .student(ng-class="{ active: studentAction.studentId == #{student.id} }")
+        %li(ng-click="studentAction.toggleStudent(#{student.id})")
+          .student(ng-class="{ active: studentAction.hasStudent(#{student.id}) }")
             .student-initials= t('.student_initials', initials: student.initials)
     .form-group
-      %button.btn.btn-primary(ng-click="saveStudentAction(studentAction)")
+      %button.btn.btn-primary( ng-disabled="!studentAction.isValid()"
+      ng-click="saveStudentAction(studentAction)")
         = t('.record_action')

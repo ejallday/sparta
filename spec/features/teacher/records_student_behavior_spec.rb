@@ -25,6 +25,28 @@ feature 'Teacher records student behavior', js: true do
     expect(page).to have_content('Swearing recorded for Timmy Sanders')
   end
 
+  scenario 'button is disabled until all data is filled in' do
+    teacher = create(:teacher)
+    course = create(:course, teacher: teacher)
+    course.students += [create(:student, first_name: 'Timmy', last_name: 'Sanders')]
+
+    visit teachers_course_path(course, as: teacher.user)
+
+    expect(page).to have_css('button[disabled]')
+
+    click_student_initials('Ts')
+
+    expect(page).to have_css('button[disabled]')
+
+    fill_in :student_action_name, with: 'Anything'
+
+    expect(page).not_to have_css('button[disabled]')
+
+    click_student_initials('Ts')
+
+    expect(page).to have_css('button[disabled]')
+  end
+
   scenario 'sees student as selected' do
     teacher = create(:teacher)
     course = create(:course, teacher: teacher)

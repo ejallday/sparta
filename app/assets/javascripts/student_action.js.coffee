@@ -5,4 +5,16 @@ studentActionFactory = (RailsResource) ->
       url: '/courses/{{courseId}}/student_actions'
       name: 'student_action'
 
+    toggleStudent: (studentId) =>
+      if @studentId == studentId
+        @studentId = null
+      else
+        @studentId = studentId
+
+    hasStudent: (studentId) =>
+      @studentId == studentId
+
+    isValid: =>
+      @name && @studentId
+
 app.factory('StudentAction', ['RailsResource', studentActionFactory])
