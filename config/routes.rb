@@ -26,7 +26,7 @@ Sparta::Application.routes.draw do
     resource :dashboard, only: [:show]
   end
 
-  resources :enrollments, only: [] do
+  resources :courses, only: [] do
     resources :student_actions, only: [:create]
   end
 

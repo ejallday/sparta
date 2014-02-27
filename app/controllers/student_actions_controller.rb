@@ -1,8 +1,9 @@
 class StudentActionsController < ApplicationController
+  respond_to :json
+
   def create
     student_action = StudentAction.create!(student_action_params)
-    flash[:notice] = t('.flash', behavior: student_action.name, student: student.full_name)
-    redirect_to teachers_course_path(course)
+    respond_with student_action, location: nil
   end
 
   private
@@ -14,6 +15,14 @@ class StudentActionsController < ApplicationController
   end
 
   def enrollment
-    Enrollment.find(params[:enrollment_id])
+    course.enrollments.find_by!(student: student)
+  end
+
+  def student
+    Student.find(params[:student_action][:student_id])
+  end
+
+  def course
+    Course.find(params[:course_id])
   end
 end
