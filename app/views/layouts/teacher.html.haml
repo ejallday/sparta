@@ -1,3 +1,4 @@
 - content_for :links do
-  %li= link_to t('new_assignment'), new_teachers_assignment_path
+  %li= link_to t('.dashboard'), teachers_dashboard_path
+  %li= link_to t('.new_assignment'), new_teachers_assignment_path
 = render template: 'layouts/role'

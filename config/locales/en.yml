@@ -13,6 +13,9 @@ en:
       new_student: 'New Student'
       new_teacher: 'New Teacher'
       invite_guardian: 'Invite Guardian'
+    teacher:
+      dashboard: 'Dashboard'
+      new_assignment: 'New Assignment'
   admin:
     courses:
       deleted: 'Course deleted'
@@ -49,8 +52,17 @@ en:
       edit_assignment: 'Edit Assignment'
       update_assignment: 'Update'
       delete_assignment: 'Delete'
-    dashboards:
-      new_assignment: 'New Assignment'
+    courses:
+      index:
+        period: 'Period'
+        course: 'Course'
+        teacher_greeting: 'Signed in as %{teacher}'
+      show:
+        student_initials: '%{initials}'
+    students:
+      show:
+        student_action: 'Student Action'
+        submit: 'Record Action'
   errors:
     unauthorized: "Sorry, we couldn't find the page"
   date:
@@ -75,3 +87,6 @@ en:
     sent: 'Invitation sent'
     sign_up: 'Sign up'
   invite: 'Click here to follow your student on the SWOTBot.'
+  student_actions:
+    create:
+      flash: '%{behavior} recorded for %{student}'
