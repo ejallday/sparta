@@ -7,9 +7,9 @@
       %input.form-control#student_action_name(ng-model="studentAction.name" required)
     %ul.classroom
       - classroom.students.each do |student|
-        %li.student
-          %a.student-initials(href ng-click="studentAction.studentId = #{student.id}")
-            = t('.student_initials', initials: student.initials)
+        %li(ng-click="studentAction.studentId = #{student.id}")
+          .student(ng-class="{ active: studentAction.studentId == #{student.id} }")
+            .student-initials= t('.student_initials', initials: student.initials)
     .form-group
       %button.btn.btn-primary(ng-click="saveStudentAction(studentAction)")
         = t('.record_action')

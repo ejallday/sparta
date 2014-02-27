@@ -18,10 +18,33 @@ feature 'Teacher records student behavior', js: true do
     course.students = [student]
 
     visit teachers_course_path(course, as: teacher.user)
-    click_link t('.teachers.courses.show.student_initials', initials: 'Ts')
+    click_student_initials('Ts')
     fill_in :student_action_name, with: 'Swearing'
     click_on t('.teachers.courses.show.record_action')
 
     expect(page).to have_content('Swearing recorded for Timmy Sanders')
+  end
+
+  scenario 'sees student as selected' do
+    teacher = create(:teacher)
+    course = create(:course, teacher: teacher)
+    course.students += [create(:student, first_name: 'Timmy', last_name: 'Sanders')]
+    course.students += [create(:student, first_name: 'Sunny', last_name: 'Smiles')]
+
+    visit teachers_course_path(course, as: teacher.user)
+    click_student_initials('Ts')
+
+    expect(page).to have_css('.active', text: 'Ts')
+    expect(page).not_to have_css('.active', text: 'Ss')
+
+    click_student_initials('Ss')
+
+    expect(page).not_to have_css('.active', text: 'Ts')
+    expect(page).to have_css('.active', text: 'Ss')
+  end
+
+  def click_student_initials(initials)
+    text = t('.teachers.courses.show.student_initials', initials: initials)
+    find('li', text: text).click
   end
 end
