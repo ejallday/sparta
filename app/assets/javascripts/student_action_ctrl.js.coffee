@@ -6,11 +6,14 @@ class StudentActionCtrl
 
     resetStudentAction()
 
+    CurrentCourse.get().then (course) ->
+      $scope.course = course
+
     $scope.saveStudentAction = (studentAction) =>
       studentAction.courseId = CurrentCourse.id()
 
-      studentAction.save().then (studentAction) ->
+      studentAction.save().then ->
         resetStudentAction()
-        $scope.alert = "#{studentAction.name} recorded for #{studentAction.studentName}"
+        $scope.alert = "#{studentAction.name} recorded"
 
 app.controller('StudentActionCtrl', ['$scope', 'StudentAction', 'CurrentCourse', StudentActionCtrl])

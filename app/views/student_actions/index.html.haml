@@ -1,0 +1,13 @@
+%div(ng-controller="StudentActionsIndexCtrl")
+  %select#student_filter(ng-model="search.studentId"
+  ng-options="student.id as student.fullName for student in course.students")
+    %option(value="")= t('.choose_student')
+
+  %table.table.table-striped.table-responsive
+    %thead
+      %th= t('.student_name')
+      %th= t('.action_name')
+    %tbody
+      %tr(ng-repeat="studentAction in studentActions | filter:search:allowStrings")
+        %td {{ studentAction.studentName }}
+        %td {{ studentAction.name }}

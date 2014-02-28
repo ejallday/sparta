@@ -5,6 +5,8 @@ class StudentAction < ActiveRecord::Base
   validates :enrollment, presence: true
   validates :name, presence: true
 
+  delegate :id, to: :student, prefix: true
+
   def student_name
     student.full_name
   end

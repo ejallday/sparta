@@ -22,12 +22,12 @@ Sparta::Application.routes.draw do
     resource :dashboard, only: [:show]
   end
 
-  namespace :students, only: [:show] do
+  namespace :students do
     resource :dashboard, only: [:show]
   end
 
-  resources :courses, only: [] do
-    resources :student_actions, only: [:create]
+  resources :courses, only: [:index, :show] do
+    resources :student_actions, only: [:create, :index]
   end
 
   namespace :guardians do

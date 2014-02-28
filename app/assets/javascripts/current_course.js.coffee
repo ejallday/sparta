@@ -1,6 +1,6 @@
 #= require sparta
 class CurrentCourse
-  constructor: ($window) ->
+  constructor: ($window, @Course) ->
     @$location =
       url: => $window.location.pathname
 
@@ -9,4 +9,7 @@ class CurrentCourse
     courseIndex = parts.indexOf('courses')
     parts[courseIndex + 1]
 
-app.service('CurrentCourse', ['$window', CurrentCourse])
+  get: =>
+    @Course.get(@id())
+
+app.service('CurrentCourse', ['$window', 'Course', CurrentCourse])

@@ -88,3 +88,7 @@ en:
   student_actions:
     create:
       flash: '%{behavior} recorded for %{student}'
+    index:
+      choose_student: 'Choose Student'
+      student_name: 'Student Name'
+      action_name: 'Action Name'
