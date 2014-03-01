@@ -19,6 +19,6 @@ studentActionFactory = (RailsResource) ->
       _.include(@studentIds, studentId)
 
     isValid: =>
-      @name && !_.isEmpty(@studentIds)
+      !_.isEmpty(@studentIds)
 
 app.factory('StudentAction', ['RailsResource', studentActionFactory])

@@ -1,16 +1,14 @@
-.seating-chart.col-sm-8.col-md-9(ng-controller="CourseCtrl")
-  %h1 Submit a behavior
-  %form.form(ng-controller="StudentActionCtrl")
-    .alert.alert-info(ng-if="alert") {{ alert }}
-    .form-group
-      %label(for="name")= t('.student_action')
-      %input.form-control#student_action_name(ng-model="studentAction.name" required)
-    %ul.classroom
-      %li(ng-repeat="student in course.students" ng-click="studentAction.toggleStudent(student.id)")
-        .student(ng-class="{ active: studentAction.hasStudent(student.id) }")
-          .student-initials {{ student.initials }}
-    .clearfix
-    .form-group
-      %button.btn.btn-primary( ng-disabled="!studentAction.isValid()"
-      ng-click="saveStudentAction(studentAction)")
-        = t('.record_action')
+%h1 Submit a behavior
+%div(ng-controller="CourseCtrl")
+  %div(ng-controller="StudentActionCtrl")
+    .seating-chart.col-sm-8.col-md-9
+      %form.form
+        .alert.alert-info(ng-if="alert") {{ alert }}
+        %ul.classroom
+          %li(ng-repeat="student in course.students" ng-click="studentAction.toggleStudent(student.id)")
+            .student(ng-class="{ active: studentAction.hasStudent(student.id) }")
+              .student-initials {{ student.initials }}
+
+    .col-sm-2.col-md-3
+      = render 'behavior_list', behaviors: StudentAction::POSITIVE_BEHAVIORS, class_name: 'btn-primary'
+      = render 'behavior_list', behaviors: StudentAction::NEGATIVE_BEHAVIORS, class_name: 'btn-danger'
