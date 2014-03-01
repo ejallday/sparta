@@ -19,10 +19,9 @@ feature 'Teacher records student behavior', js: true do
 
     visit teachers_course_path(course, as: teacher.user)
     click_student_initials('Ts')
-    fill_in :student_action_name, with: 'Swearing'
-    click_on t('.teachers.courses.show.record_action')
+    find('button', text: 'Quality Work').click
 
-    expect_student_to_have_behavior(timmy, 'Swearing')
+    expect_student_to_have_behavior(timmy, 'Quality Work')
   end
 
   scenario 'button is disabled until all data is filled in' do
@@ -33,10 +32,6 @@ feature 'Teacher records student behavior', js: true do
     expect(page).to have_css('button[disabled]')
 
     click_student_initials('Ts')
-
-    expect(page).to have_css('button[disabled]')
-
-    fill_in :student_action_name, with: 'Anything'
 
     expect(page).not_to have_css('button[disabled]')
 
@@ -70,14 +65,14 @@ feature 'Teacher records student behavior', js: true do
     visit teachers_course_path(course, as: teacher.user)
     click_student_initials('Ts')
     click_student_initials('Jj')
-    fill_in :student_action_name, with: 'Mass Murder'
-    click_on t('.teachers.courses.show.record_action')
 
-    expect(page).to have_content('Mass Murder recorded')
+    find('button', text: 'Quality Work').click
 
-    expect_student_to_have_behavior(timmy, 'Mass Murder')
-    expect_student_to_have_behavior(jim, 'Mass Murder')
-    expect_student_not_to_have_behavior(sunny, 'Mass Murder')
+    expect(page).to have_content('Quality Work recorded')
+
+    expect_student_to_have_behavior(timmy, 'Quality Work')
+    expect_student_to_have_behavior(jim, 'Quality Work')
+    expect_student_not_to_have_behavior(sunny, 'Quality Work')
   end
 
   def click_student_initials(initials)

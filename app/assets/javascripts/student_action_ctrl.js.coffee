@@ -6,11 +6,9 @@ class StudentActionCtrl
 
     resetStudentAction()
 
-    CurrentCourse.get().then (course) ->
-      $scope.course = course
-
-    $scope.saveStudentAction = (studentAction) =>
+    $scope.saveStudentAction = (studentAction, name) =>
       studentAction.courseId = CurrentCourse.id()
+      studentAction.name = name
 
       studentAction.save().then ->
         resetStudentAction()
