@@ -1,0 +1,37 @@
+.behavior-list {
+  list-style: none;
+  margin-top: 15px;
+}
+
+.behavior-list li {
+  margin-top: 15px;
+}
+
+.classroom {
+  list-style: none;
+}
+
+.classroom li {
+  float: left;
+}
+
+.seating-chart {
+  padding: 0px
+}
+
+.student {
+  height: 60px;
+  width: 60px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 0px 15px 15px 0px;
+}
+
+.student.active {
+  background-color:#a4fcc5;
+}
+
+.student-initials {
+  font-size: x-large;
+}
