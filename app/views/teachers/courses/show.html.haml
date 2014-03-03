@@ -1,6 +1,16 @@
-.seating-chart.col-sm-6.col-md-7
-  %ul.classroom
-    - classroom.students.each do |student|
-      %li.student{ data: { id: student.id }}
-        = link_to t('.student_initials', initials: student.initials),
-          teachers_course_student_path(classroom.course, student)
+.seating-chart.col-sm-8.col-md-9(ng-controller="CourseCtrl")
+  %h1 Submit a behavior
+  %form.form(ng-controller="StudentActionCtrl")
+    .alert.alert-info(ng-if="alert") {{ alert }}
+    .form-group
+      %label(for="name")= t('.student_action')
+      %input.form-control#student_action_name(ng-model="studentAction.name" required)
+    %ul.classroom
+      %li(ng-repeat="student in course.students" ng-click="studentAction.toggleStudent(student.id)")
+        .student(ng-class="{ active: studentAction.hasStudent(student.id) }")
+          .student-initials {{ student.initials }}
+    .clearfix
+    .form-group
+      %button.btn.btn-primary( ng-disabled="!studentAction.isValid()"
+      ng-click="saveStudentAction(studentAction)")
+        = t('.record_action')

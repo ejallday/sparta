@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature ' Teacher views course view' do
+feature ' Teacher views course view', js: true do
   scenario 'by visiting Teacher course' do
     teacher = create(:teacher)
     course = create(:course, teacher: teacher)

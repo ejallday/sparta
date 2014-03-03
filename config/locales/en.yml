@@ -58,11 +58,9 @@ en:
         course: 'Course'
         teacher_greeting: 'Signed in as %{teacher}'
       show:
-        student_initials: '%{initials}'
-    students:
-      show:
+        record_action: 'Record Action'
         student_action: 'Student Action'
-        submit: 'Record Action'
+        student_initials: '%{initials}'
   errors:
     unauthorized: "Sorry, we couldn't find the page"
   date:
@@ -90,3 +88,7 @@ en:
   student_actions:
     create:
       flash: '%{behavior} recorded for %{student}'
+    index:
+      choose_student: 'Choose Student'
+      student_name: 'Student Name'
+      action_name: 'Action Name'

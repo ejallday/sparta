@@ -1,8 +1,16 @@
 class StudentActionsController < ApplicationController
+  helper_method :course
+  respond_to :json
+  respond_to :html, only: :index
+
   def create
-    student_action = StudentAction.create!(student_action_params)
-    flash[:notice] = t('.flash', behavior: student_action.name, student: student.full_name)
-    redirect_to teachers_course_path(course)
+    student_actions = StudentAction.create!(student_action_params)
+    respond_with student_actions, location: nil
+  end
+
+  def index
+    @student_actions = course.student_actions
+    respond_with @student_actions
   end
 
   private
@@ -10,10 +18,19 @@ class StudentActionsController < ApplicationController
   delegate :student, :course, to: :enrollment
 
   def student_action_params
-    params.require(:student_action).permit(:name).merge(enrollment: enrollment)
+    enrollments.map do |enrollment|
+      {
+        name: params[:student_action][:name],
+        enrollment: enrollment,
+      }
+    end
   end
 
-  def enrollment
-    Enrollment.find(params[:enrollment_id])
+  def enrollments
+    course.enrollments.where(student_id: params[:student_action][:student_ids])
+  end
+
+  def course
+    @course ||= Course.find(params[:course_id])
   end
 end

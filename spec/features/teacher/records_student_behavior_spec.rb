@@ -1,8 +1,10 @@
 require 'spec_helper'
 
-feature 'Teacher records student behavior' do
+feature 'Teacher records student behavior', js: true do
+  let(:teacher) { create(:teacher) }
+  let(:course) { create(:course, teacher: teacher) }
+
   scenario "by navigating to the 'live course' view" do
-    teacher = create(:teacher)
     course = create(:course, name: 'Angular JS', teacher: teacher)
 
     visit teachers_courses_path(as: teacher.user)
@@ -12,21 +14,89 @@ feature 'Teacher records student behavior' do
   end
 
   scenario 'by sumbitting a behavior for student' do
-    teacher = create(:teacher)
-    course = create(:course, teacher: teacher)
-    student = create(:student, first_name: 'Timmy', last_name: 'Sanders')
-    course.students = [student]
+    timmy = create(:student, first_name: 'Timmy', last_name: 'Sanders')
+    course.students = [timmy]
+
+    visit teachers_course_path(course, as: teacher.user)
+    click_student_initials('Ts')
+    fill_in :student_action_name, with: 'Swearing'
+    click_on t('.teachers.courses.show.record_action')
+
+    expect_student_to_have_behavior(timmy, 'Swearing')
+  end
+
+  scenario 'button is disabled until all data is filled in' do
+    course.students += [create(:student, first_name: 'Timmy', last_name: 'Sanders')]
 
     visit teachers_course_path(course, as: teacher.user)
 
-    click_link t('.teachers.courses.show.student_initials', initials: 'Ts')
+    expect(page).to have_css('button[disabled]')
 
-    expect(page).to have_content('Timmy Sanders')
+    click_student_initials('Ts')
 
-    fill_in :student_action_name, with: 'Swearing'
-    click_button t('.teachers.students.show.submit')
+    expect(page).to have_css('button[disabled]')
 
-    expect(current_path).to eq(teachers_course_path(course))
-    expect(page).to have_content('Swearing recorded for Timmy Sanders')
+    fill_in :student_action_name, with: 'Anything'
+
+    expect(page).not_to have_css('button[disabled]')
+
+    click_student_initials('Ts')
+
+    expect(page).to have_css('button[disabled]')
+  end
+
+  scenario 'sees student as selected' do
+    course.students += [create(:student, first_name: 'Timmy', last_name: 'Sanders')]
+    course.students += [create(:student, first_name: 'Sunny', last_name: 'Smiles')]
+
+    visit teachers_course_path(course, as: teacher.user)
+    click_student_initials('Ts')
+
+    expect(page).to have_css('.active', text: 'Ts')
+    expect(page).not_to have_css('.active', text: 'Ss')
+
+    click_student_initials('Ss')
+
+    expect(page).to have_css('.active', text: 'Ts')
+    expect(page).to have_css('.active', text: 'Ss')
+  end
+
+  scenario 'submits action for multpile students' do
+    timmy = create(:student, first_name: 'Timmy', last_name: 'Sanders')
+    sunny = create(:student, first_name: 'Sunny', last_name: 'Smiles')
+    jim = create(:student, first_name: 'Jim',   last_name: 'James')
+    course.students += [timmy, sunny, jim]
+
+    visit teachers_course_path(course, as: teacher.user)
+    click_student_initials('Ts')
+    click_student_initials('Jj')
+    fill_in :student_action_name, with: 'Mass Murder'
+    click_on t('.teachers.courses.show.record_action')
+
+    expect(page).to have_content('Mass Murder recorded')
+
+    expect_student_to_have_behavior(timmy, 'Mass Murder')
+    expect_student_to_have_behavior(jim, 'Mass Murder')
+    expect_student_not_to_have_behavior(sunny, 'Mass Murder')
+  end
+
+  def click_student_initials(initials)
+    text = t('.teachers.courses.show.student_initials', initials: initials)
+    find('li', text: text).click
+  end
+
+  def view_student_behaviors(student)
+    visit course_student_actions_path(course)
+    select student.full_name, from: :student_filter
+  end
+
+  def expect_student_to_have_behavior(student, behavior)
+    view_student_behaviors(student)
+    expect(page).to have_content(behavior)
+  end
+
+  def expect_student_not_to_have_behavior(student, behavior)
+    view_student_behaviors(student)
+    expect(page).not_to have_content(behavior)
   end
 end

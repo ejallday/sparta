@@ -2,7 +2,7 @@ module Admin
   class CoursesController < AdminController
     helper_method :course
     helper_method :courses
-    respond_to :html, :json
+    respond_to :html
 
     def create
       @course = Course.create!(course_params)
@@ -15,10 +15,6 @@ module Admin
     def destroy
       course.destroy
       redirect_to admin_courses_path, notice: t('courses.deleted')
-    end
-
-    def index
-      respond_with courses
     end
 
     def new
@@ -38,10 +34,6 @@ module Admin
 
     def course
       @course ||= Course.find(params[:id])
-    end
-
-    def courses
-      @courses ||= Course.includes(teacher: :user)
     end
   end
 end

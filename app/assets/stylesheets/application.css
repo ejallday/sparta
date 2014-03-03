@@ -20,8 +20,11 @@ body {
 }
 
 .classroom {
-  display: inline-flex;
   list-style: none;
+}
+
+.classroom li {
+  float: left;
 }
 
 .student {
