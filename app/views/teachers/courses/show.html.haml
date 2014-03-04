@@ -1,14 +1,15 @@
-%h1 Submit a behavior
 %div(ng-controller="CourseCtrl")
   %div(ng-controller="StudentActionCtrl")
     .seating-chart.col-sm-8.col-md-9
       %form.form
         .alert.alert-info(ng-if="alert") {{ alert }}
         %ul.classroom
-          %li(ng-repeat="student in course.students" ng-click="studentAction.toggleStudent(student.id)")
+          %li(ng-repeat="student in course.students | orderBy:'initials'" ng-click="studentAction.toggleStudent(student.id)")
             .student(ng-class="{ active: studentAction.hasStudent(student.id) }")
               .student-initials {{ student.initials }}
 
     .col-sm-2.col-md-3
+      %a.btn.btn-primary.btn-lg.attendance-btn{ href: teachers_course_attendance_path(course) }
+        = t('.attendance')
       = render 'behavior_list', behaviors: StudentAction::POSITIVE_BEHAVIORS, class_name: 'btn-primary'
       = render 'behavior_list', behaviors: StudentAction::NEGATIVE_BEHAVIORS, class_name: 'btn-danger'

@@ -7,6 +7,14 @@
   margin-top: 15px;
 }
 
+.attendance-btn {
+  margin-left: 40px;
+}
+
+.attendance-btn a {
+  color: white;
+}
+
 .classroom {
   list-style: none;
 }
@@ -20,18 +28,40 @@
 }
 
 .student {
+  background-color: #ecf0f1;
+  border-radius: 6px;
+  cursor: pointer;
+  float: left;
   height: 60px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  padding: 10px;
   width: 60px;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 5px;
-  margin: 0px 15px 15px 0px;
 }
 
 .student.active {
-  background-color:#a4fcc5;
+  background-color:#2ecc71;
 }
 
 .student-initials {
-  font-size: x-large;
+  height: 60px;
+  width: 60px;
+  font-size: 2.5em;
+  text-align: center;
+  font-weight: bold;
+  margin-left: -10px;
+  margin-top: -12px;
 }
+
+.student.present {
+  background-color:#2ecc71;
+}
+
+.student.tardy {
+  background-color:#f1c40f;
+}
+
+.student.absent {
+  background-color:#e74c3c;
+}
+

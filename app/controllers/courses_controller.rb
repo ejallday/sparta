@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  helper_method :course
   respond_to :json
 
   def index

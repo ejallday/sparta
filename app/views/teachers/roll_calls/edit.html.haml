@@ -1,0 +1,10 @@
+%div(ng-controller="RollCallCtrl")
+  .seating-chart.col-sm-8.col-md-9
+    %ul.classroom
+      %li(class="student {{ rollCall.attendanceStatuses[attendance.id] }}"
+        ng-repeat="attendance in rollCall.attendances  | orderBy:'studentInitials'"
+        ng-click="rollCall.cycleAttendanceStatus(attendance.id)")
+        .student-initials {{ attendance.studentInitials }}
+
+  .col-sm-2.col-md-3
+    %button.btn.btn-primary(ng-click="saveRollCall(rollCall)")= t('.take_attendance')

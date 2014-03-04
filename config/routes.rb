@@ -17,6 +17,8 @@ Sparta::Application.routes.draw do
   namespace :teachers do
     resources :assignments
     resources :courses, only: [:index, :show] do
+      resource :roll_call, only: [:show, :edit, :update]
+      get "/attendance", to: "roll_calls#edit", as: :attendance
       resources :students
     end
     resource :dashboard, only: [:show]
@@ -28,6 +30,7 @@ Sparta::Application.routes.draw do
 
   resources :courses, only: [:index, :show] do
     resources :student_actions, only: [:create, :index]
+    resources :attendances, only: [:create, :index]
   end
 
   namespace :guardians do
