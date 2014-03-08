@@ -1,4 +1,4 @@
-#= require sparta
+#= require sparta_services
 studentActionFactory = (RailsResource) ->
   class StudentAction extends RailsResource
     @configure
@@ -21,4 +21,4 @@ studentActionFactory = (RailsResource) ->
     isValid: =>
       !_.isEmpty(@studentIds)
 
-app.factory('StudentAction', ['RailsResource', studentActionFactory])
+services.factory('StudentAction', ['RailsResource', studentActionFactory])
