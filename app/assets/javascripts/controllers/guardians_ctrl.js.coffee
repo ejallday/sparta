@@ -4,4 +4,4 @@ class GuardiansCtrl
     Guardian.query().then (guardians) ->
       $scope.guardians = guardians
 
-app.controller('GuardiansCtrl', ['$scope', 'Guardian', GuardiansCtrl])
+@controllers.controller('GuardiansCtrl', ['$scope', 'Guardian', GuardiansCtrl])
