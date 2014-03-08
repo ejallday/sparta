@@ -61,4 +61,4 @@ describe 'RollCallCtrl', ->
     expect($window.location).toEqual('/teachers/courses/3')
 
   it 'cycles through attendance statuses', ->
-    
+
