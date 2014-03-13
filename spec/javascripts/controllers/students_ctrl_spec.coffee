@@ -15,12 +15,6 @@ describe 'StudentsCtrl', ->
         $scope: $scope
         Student: Student
 
-  it 'querys the current course', ->
-    spyOn(Student, 'query').andReturn($q.defer().promise)
-
-    makeController()
-    expect(Student.query).toHaveBeenCalled()
-
   it 'exposes Student on the scope', ->
     queryStudent = $q.defer()
     Student.query = -> queryStudent.promise

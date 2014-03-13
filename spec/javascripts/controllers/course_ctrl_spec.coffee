@@ -15,12 +15,6 @@ describe 'CourseCtrl', ->
         $scope: $scope
         CurrentCourse: CurrentCourse
 
-  it 'gets the current course', ->
-    spyOn(CurrentCourse, 'get').andReturn($q.defer().promise)
-
-    makeController()
-    expect(CurrentCourse.get).toHaveBeenCalled()
-
   it 'exposes Course on the scope', ->
     getCourse = $q.defer()
     CurrentCourse.get = -> getCourse.promise

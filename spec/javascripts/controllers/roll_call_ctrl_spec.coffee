@@ -20,14 +20,6 @@ describe 'RollCallCtrl', ->
         CurrentCourse: CurrentCourse
         RollCall: RollCall
 
-  it 'gets the roll call for the current course', ->
-    CurrentCourse.id = -> 1
-    spyOn(RollCall, 'get').andReturn($q.defer().promise)
-
-    makeController()
-
-    expect(RollCall.get).toHaveBeenCalledWith(courseId: 1)
-
   it 'exposes the roll call on the scope', ->
     getRollCall = $q.defer()
     RollCall.get = -> getRollCall.promise

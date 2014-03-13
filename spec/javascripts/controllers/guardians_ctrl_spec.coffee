@@ -15,12 +15,6 @@ describe 'GuardiansCtrl', ->
         $scope: $scope
         Guardian: Guardian
 
-  it 'querys the current course', ->
-    spyOn(Guardian, 'query').andReturn($q.defer().promise)
-
-    makeController()
-    expect(Guardian.query).toHaveBeenCalled()
-
   it 'exposes Guardian on the scope', ->
     queryGuardian = $q.defer()
     Guardian.query = -> queryGuardian.promise

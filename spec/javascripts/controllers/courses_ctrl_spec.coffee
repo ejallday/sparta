@@ -15,13 +15,6 @@ describe 'CoursesCtrl', ->
         $scope: $scope
         Course: Course
 
-  it 'retrieves a list of courses', ->
-    spyOn(Course, 'query').andReturn($q.defer().promise)
-
-    makeController()
-
-    expect(Course.query).toHaveBeenCalled()
-
   it 'exposes the courses to the scope', ->
     queryCourses = $q.defer()
     Course.query = -> queryCourses.promise
