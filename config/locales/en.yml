@@ -58,8 +58,17 @@ en:
         course: 'Course'
         teacher_greeting: 'Signed in as %{teacher}'
       show:
+        attendance: 'Attendance'
         record_action: 'Record Action'
         student_action: 'Student Action'
+        student_initials: '%{initials}'
+    roll_calls:
+      attendance_submitted: 'Attendance Submitted'
+      edit:
+        take_attendance: 'Take Attendance'
+  course:
+    attendances:
+      index:
         student_initials: '%{initials}'
   errors:
     unauthorized: "Sorry, we couldn't find the page"

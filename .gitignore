@@ -13,3 +13,4 @@ tags
 tmp/*
 tmp/**/*
 vendor/assets/components
+.schema.xml

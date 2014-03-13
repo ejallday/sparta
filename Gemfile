@@ -36,6 +36,7 @@ group :development, :test do
   gem 'faker'
   gem 'pry'
   gem 'rspec-rails', '>= 2.14'
+  gem 'teaspoon'
 end
 
 group :test do

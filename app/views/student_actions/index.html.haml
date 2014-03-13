@@ -8,6 +8,6 @@
       %th= t('.student_name')
       %th= t('.action_name')
     %tbody
-      %tr(ng-repeat="studentAction in studentActions | filter:search:allowStrings")
+      %tr(ng-repeat="studentAction in studentActions | filter:search:matchInputAllowingAny")
         %td {{ studentAction.studentName }}
         %td {{ studentAction.name }}

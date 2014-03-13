@@ -1,6 +1,7 @@
 module Teachers
   class CoursesController < TeachersController
     helper_method :classroom
+    helper_method :course
     helper_method :courses
     helper_method :teacher
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226163132) do
+ActiveRecord::Schema.define(version: 20140303180431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20140226163132) do
     t.date     "due_on"
     t.integer  "points_possible"
     t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "attendances", force: true do |t|
+    t.integer  "enrollment_id"
+    t.string   "status",        default: "present", null: false
+    t.date     "date",                              null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

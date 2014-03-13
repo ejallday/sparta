@@ -1,4 +1,4 @@
-window.app = angular.module("sparta",['rails'])
+window.app = angular.module("sparta",['rails', 'sparta.controllers', 'sparta.services'])
 
 app.config([
   '$httpProvider'

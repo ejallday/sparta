@@ -1,0 +1,7 @@
+%ul.behavior-list
+  - behaviors.each do |behavior|
+    %li.behavior
+      %button(class="btn btn-lg #{class_name}"
+        ng-disabled="!studentAction.isValid()"
+        ng-click="saveStudentAction(studentAction, '#{behavior}')")
+        #{behavior}
