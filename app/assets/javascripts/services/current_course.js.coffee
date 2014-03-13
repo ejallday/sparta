@@ -1,4 +1,4 @@
-#= require sparta
+#= require ../sparta_services
 class CurrentCourse
   constructor: ($window, @Course) ->
     @$location =
@@ -12,4 +12,4 @@ class CurrentCourse
   get: =>
     @Course.get(@id())
 
-app.service('CurrentCourse', ['$window', 'Course', CurrentCourse])
+services.service('CurrentCourse', ['$window', 'Course', CurrentCourse])

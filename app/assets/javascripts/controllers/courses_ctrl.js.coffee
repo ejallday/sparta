@@ -1,4 +1,4 @@
-#= require sparta
+#= require ../sparta_controllers
 class CoursesCtrl
   constructor: ($scope, Course) ->
     Course.query().then (courses) ->
@@ -7,4 +7,4 @@ class CoursesCtrl
     $scope.semiStrict = (actual, expected) ->
       !expected? || expected == actual
 
-app.controller('CoursesCtrl', ['$scope', 'Course', CoursesCtrl])
+@controllers.controller('CoursesCtrl', ['$scope', 'Course', CoursesCtrl])

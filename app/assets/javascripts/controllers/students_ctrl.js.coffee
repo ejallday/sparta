@@ -4,4 +4,4 @@ class StudentsCtrl
     Student.query().then (students) ->
       $scope.students = students
 
-app.controller('StudentsCtrl', ['$scope', 'Student', StudentsCtrl])
+@controllers.controller('StudentsCtrl', ['$scope', 'Student', StudentsCtrl])
