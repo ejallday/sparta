@@ -1,13 +1,12 @@
 #= require sparta
 class StudentActionsIndexCtrl
-  constructor: ($scope, StudentAction, CurrentCourse) ->
+  constructor: ($scope, StudentAction, CurrentCourse, matchInputAllowingAny) ->
     StudentAction.query({}, courseId: CurrentCourse.id()).then (studentActions) ->
       $scope.studentActions = studentActions
 
-    $scope.allowStrings = (expected, actual) ->
-      !actual || expected.toString() == actual.toString()
+      $scope.matchInputAllowingAny = matchInputAllowingAny
 
     CurrentCourse.get().then (course) ->
       $scope.course = course
 
-app.controller('StudentActionsIndexCtrl', ['$scope', 'StudentAction', 'CurrentCourse', StudentActionsIndexCtrl])
+@controllers.controller('StudentActionsIndexCtrl', ['$scope', 'StudentAction', 'CurrentCourse', 'matchInputAllowingAny', StudentActionsIndexCtrl])
